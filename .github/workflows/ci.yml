@@ -72,6 +72,6 @@ jobs:
           name: ios-ci-logs-${{ github.run_number }}
           path: |
             build/*.log
-            build/home.png
+            build/*.png
           if-no-files-found: ignore
           retention-days: 14
