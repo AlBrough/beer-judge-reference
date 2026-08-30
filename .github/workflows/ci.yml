@@ -27,6 +27,7 @@ jobs:
         run: |
           brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
           xcodegen generate
+          mkdir -p build
       - name: Build without signing
         run: |
           set -o pipefail
@@ -42,6 +43,8 @@ jobs:
         run: |
           DEVICE_ID=$(xcrun simctl list devices available -j | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid')
           test -n "$DEVICE_ID" -a "$DEVICE_ID" != "null"
+          xcrun simctl boot "$DEVICE_ID" || true
+          xcrun simctl bootstatus "$DEVICE_ID" -b
           set -o pipefail
           xcodebuild \
             -project BeerJudgeReference.xcodeproj \
@@ -50,11 +53,21 @@ jobs:
             -derivedDataPath build/DerivedData \
             CODE_SIGNING_ALLOWED=NO \
             test | tee build/test.log
+      - name: Capture simulator preview
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices booted -j | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid')
+          APP_PATH="build/DerivedData/Build/Products/Debug-iphonesimulator/Beer Judge Reference.app"
+          test -d "$APP_PATH"
+          xcrun simctl install "$DEVICE_ID" "$APP_PATH"
+          xcrun simctl launch "$DEVICE_ID" com.brewvault.beerjudge
+          sleep 4
+          xcrun simctl io "$DEVICE_ID" screenshot build/home.png
       - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: ios-ci-logs-${{ github.run_number }}
-          path: build/*.log
+          path: |
+            build/*.log
+            build/home.png
           if-no-files-found: ignore
           retention-days: 14
-
