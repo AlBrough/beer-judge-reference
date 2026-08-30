@@ -57,16 +57,26 @@ struct StyleDetailView: View {
     }
 
     private var metrics: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-                ForEach(style.metrics) { metric in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(metric.label).font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
-                        Text(metric.value).font(.subheadline.monospaced().weight(.bold))
-                    }
-                    .padding(.horizontal, 13).padding(.vertical, 10)
-                    .background(Color.judgeRaisedSurface, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+        LazyVGrid(
+            columns: [GridItem(.adaptive(minimum: 86), spacing: 8)],
+            alignment: .leading,
+            spacing: 8
+        ) {
+            ForEach(style.metrics) { metric in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(metric.label)
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
+                    Text(metric.value)
+                        .font(.subheadline.monospaced().weight(.bold))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
                 }
+                .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 9)
+                .background(Color.judgeRaisedSurface, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
             }
         }
     }
