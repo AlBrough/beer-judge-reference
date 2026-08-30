@@ -1,6 +1,7 @@
 import XCTest
 
 final class StyleDetailLayoutUITests: XCTestCase {
+    @MainActor
     func testAllSaisonMetricsAreVisibleWithoutScrolling() {
         let app = XCUIApplication()
         app.launchEnvironment["STYLE_DETAIL_PREVIEW_ID"] = "bjcp-25B"
