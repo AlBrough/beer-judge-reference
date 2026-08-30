@@ -37,6 +37,7 @@ targets:
     scheme:
       testTargets:
         - BeerJudgeReferenceTests
+        - BeerJudgeReferenceUITests
   BeerJudgeReferenceTests:
     type: bundle.unit-test
     platform: iOS
@@ -54,3 +55,14 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: com.brewvault.beerjudge.tests
+  BeerJudgeReferenceUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: BeerJudgeReferenceUITests
+    dependencies:
+      - target: BeerJudgeReference
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.brewvault.beerjudge.uitests
