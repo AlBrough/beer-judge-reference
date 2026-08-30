@@ -30,6 +30,8 @@ xcodegen generate
 xcodebuild -project BeerJudgeReference.xcodeproj -scheme BeerJudgeReference -destination 'platform=iOS Simulator,name=iPhone 17 Pro' test
 ```
 
+The GitHub workflow builds and tests every change without requiring a local Mac. See [the TestFlight checklist](docs/TESTFLIGHT.md) for the signed release workflow.
+
 ## Rights and attribution
 
 The application source is GPLv3. Guideline text remains copyright of its respective publisher and is presented for free educational and judging reference use.

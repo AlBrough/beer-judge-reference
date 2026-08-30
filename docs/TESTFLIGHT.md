@@ -1,22 +1,24 @@
 # TestFlight release
 
-## One-time Apple setup
+## Current Apple setup
 
-1. Create bundle ID `com.brewvault.beerjudge` in Certificates, Identifiers & Profiles.
-2. Create the App Store Connect app record:
+Already configured:
+
+- Bundle ID `com.brewvault.beerjudge`
+- `IOS_APP_STORE` profile `AppStore com.brewvault.beerjudge`
+- GitHub environment `mobile-release`
+- Apple team/API variables and signing secrets
+
+One portal-only step remains. Create the App Store Connect app record:
+
+1. Open <https://appstoreconnect.apple.com/apps> and choose **My Apps → + → New App**.
+2. Enter:
    - Name: Beer Judge Reference
    - Bundle ID: `com.brewvault.beerjudge`
    - SKU: `beer-judge-reference-ios`
-3. Create an `IOS_APP_STORE` provisioning profile named `AppStore com.brewvault.beerjudge` using the existing Apple Distribution certificate.
-4. Create the GitHub environment `mobile-release`.
-5. Add repository/environment variables:
-   - `APPLE_TEAM_ID`
-   - `APPSTORE_ISSUER_ID`
-   - `APPSTORE_API_KEY_ID`
-6. Add repository/environment secrets:
-   - `APPSTORE_API_PRIVATE_KEY`
-   - `APPSTORE_CERTIFICATES_FILE_BASE64`
-   - `APPSTORE_CERTIFICATES_PASSWORD`
+   - Primary language: English (Australia)
+   - Platform: iOS
+3. Click **Create**.
 
 ## Send a build
 
@@ -26,4 +28,3 @@
 4. After App Store Connect finishes processing, add the build to an internal TestFlight group.
 
 Every workflow run uses its GitHub run number as the monotonically increasing Apple build number.
-

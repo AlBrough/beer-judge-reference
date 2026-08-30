@@ -40,9 +40,9 @@ targets:
     sources:
       - path: BeerJudgeReferenceTests
     resources:
-      - path: Resources
-        excludes:
-          - Assets.xcassets
+      - path: Resources/guidelines-manifest.json
+      - path: Resources/bjcp-2021.json
+      - path: Resources/ba-2026.json
     dependencies:
       - target: BeerJudgeReference
     settings:
