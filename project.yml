@@ -39,6 +39,10 @@ targets:
     platform: iOS
     sources:
       - path: BeerJudgeReferenceTests
+    resources:
+      - path: Resources
+        excludes:
+          - Assets.xcassets
     dependencies:
       - target: BeerJudgeReference
     settings:
