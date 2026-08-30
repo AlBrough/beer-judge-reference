@@ -7,6 +7,14 @@ struct SettingsView: View {
     @AppStorage("colourTheme") private var colourTheme = JudgeColourTheme.forest.rawValue
     @AppStorage("keepAwakeWhileJudging") private var keepAwake = true
 
+    private var selectedAppearance: AppearancePreference {
+        AppearancePreference(rawValue: appearancePreference) ?? .system
+    }
+
+    private var selectedTheme: JudgeColourTheme {
+        JudgeColourTheme(rawValue: colourTheme) ?? .forest
+    }
+
     var body: some View {
         Form {
             Section("Guidelines") {
@@ -36,18 +44,62 @@ struct SettingsView: View {
 
             Section("Judging") {
                 Toggle("Keep screen awake while viewing a style", isOn: $keepAwake)
-                Picker("Appearance", selection: $appearancePreference) {
-                    ForEach(AppearancePreference.allCases) { Text($0.label).tag($0.rawValue) }
+                Menu {
+                    ForEach(AppearancePreference.allCases) { option in
+                        Button {
+                            appearancePreference = option.rawValue
+                        } label: {
+                            if selectedAppearance == option {
+                                Label(option.label, systemImage: "checkmark")
+                            } else {
+                                Text(option.label)
+                            }
+                        }
+                    }
+                } label: {
+                    HStack {
+                        Text("Appearance")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Text(selectedAppearance.label)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption.weight(.bold))
+                    }
+                    .foregroundStyle(theme.accent)
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
                 }
+                .accessibilityIdentifier("appearance-menu")
             }
             .listRowBackground(theme.surface)
 
             Section {
-                Picker("Colour theme", selection: $colourTheme) {
+                Menu {
                     ForEach(JudgeColourTheme.allCases) { option in
-                        Label(option.label, systemImage: option.symbol).tag(option.rawValue)
+                        Button {
+                            colourTheme = option.rawValue
+                        } label: {
+                            if selectedTheme == option {
+                                Label(option.label, systemImage: "checkmark")
+                            } else {
+                                Label(option.label, systemImage: option.symbol)
+                            }
+                        }
                     }
+                } label: {
+                    HStack {
+                        Text("Colour theme")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Label(selectedTheme.label, systemImage: selectedTheme.symbol)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption.weight(.bold))
+                    }
+                    .foregroundStyle(theme.accent)
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
                 }
+                .accessibilityIdentifier("colour-theme-menu")
             } header: {
                 Text("Colour")
             } footer: {

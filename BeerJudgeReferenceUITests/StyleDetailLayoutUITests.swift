@@ -36,4 +36,18 @@ final class StyleDetailLayoutUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Saison"].waitForExistence(timeout: 3), "Saison was not found")
         XCTAssertFalse(app.staticTexts["Altbier"].exists, "Compare search did not filter unrelated styles")
     }
+
+    @MainActor
+    func testSettingsThemeCanChangeToOcean() {
+        let app = XCUIApplication()
+        app.launchEnvironment["APP_PREVIEW_ROUTE"] = "settings"
+        app.launch()
+
+        let themeMenu = app.buttons["colour-theme-menu"]
+        XCTAssertTrue(themeMenu.waitForExistence(timeout: 8), "Colour theme menu is unavailable")
+        themeMenu.tap()
+        app.buttons["Ocean"].tap()
+
+        XCTAssertTrue(themeMenu.label.contains("Ocean"), "Ocean was not shown as the selected theme")
+    }
 }

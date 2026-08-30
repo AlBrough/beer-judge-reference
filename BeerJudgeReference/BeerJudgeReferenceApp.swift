@@ -25,6 +25,10 @@ struct BeerJudgeReferenceApp: App {
             NavigationStack {
                 CompareStyleSelectionView(title: "First style", selection: .constant(""))
             }
+        } else if ProcessInfo.processInfo.environment["APP_PREVIEW_ROUTE"] == "settings" {
+            NavigationStack {
+                SettingsView()
+            }
         } else {
             RootView()
         }

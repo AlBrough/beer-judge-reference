@@ -85,6 +85,13 @@ jobs:
             xcrun simctl launch "$DEVICE_ID" com.brewvault.beerjudge
           sleep 4
           xcrun simctl io "$DEVICE_ID" screenshot build/compare-picker.png
+          xcrun simctl terminate "$DEVICE_ID" com.brewvault.beerjudge
+          xcrun simctl spawn "$DEVICE_ID" defaults write com.brewvault.beerjudge colourTheme ocean
+          xcrun simctl spawn "$DEVICE_ID" defaults write com.brewvault.beerjudge appearancePreference light
+          SIMCTL_CHILD_APP_PREVIEW_ROUTE=settings \
+            xcrun simctl launch "$DEVICE_ID" com.brewvault.beerjudge
+          sleep 4
+          xcrun simctl io "$DEVICE_ID" screenshot build/settings-ocean.png
       - uses: actions/upload-artifact@v7
         if: always()
         with:
