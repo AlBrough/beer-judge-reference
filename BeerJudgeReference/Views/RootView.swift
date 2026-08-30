@@ -9,10 +9,8 @@ struct RootView: View {
             NavigationStack { SavedView() }.tabItem { Label("Saved", systemImage: "bookmark.fill") }
             NavigationStack { SettingsView() }.tabItem { Label("Settings", systemImage: "gearshape.fill") }
         }
-        .tint(.amberAccent)
+        .tint(.judgeAccent)
+        .toolbarBackground(Color.judgeSurface, for: .tabBar)
+        .toolbarBackground(.visible, for: .tabBar)
     }
-}
-
-extension Color {
-    static let amberAccent = Color(red: 0.78, green: 0.43, blue: 0.10)
 }

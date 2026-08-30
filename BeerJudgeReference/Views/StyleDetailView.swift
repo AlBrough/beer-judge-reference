@@ -16,7 +16,7 @@ struct StyleDetailView: View {
                         Text(section.title.uppercased())
                             .font(.caption.weight(.bold))
                             .tracking(1.1)
-                            .foregroundStyle(Color.amberAccent)
+                            .foregroundStyle(Color.judgeAccent)
                         Text(section.body)
                             .font(.body)
                             .lineSpacing(4)
@@ -24,12 +24,12 @@ struct StyleDetailView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(16)
-                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 18))
+                    .judgeCard()
                 }
             }
             .padding()
         }
-        .background(Color(.systemGroupedBackground))
+        .background(Color.judgeBackground)
         .navigationTitle(style.number.isEmpty ? "Style" : style.number)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -49,7 +49,7 @@ struct StyleDetailView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if !style.number.isEmpty { Text(style.number).font(.headline.monospaced()).foregroundStyle(Color.amberAccent) }
+            if !style.number.isEmpty { Text(style.number).font(.headline.monospaced()).foregroundStyle(Color.judgeAccent) }
             Text(style.name).font(.largeTitle.bold()).minimumScaleFactor(0.75)
             Text(style.category).font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
         }
@@ -65,10 +65,9 @@ struct StyleDetailView: View {
                         Text(metric.value).font(.subheadline.monospaced().weight(.bold))
                     }
                     .padding(.horizontal, 13).padding(.vertical, 10)
-                    .background(Color.amberAccent.opacity(0.12), in: RoundedRectangle(cornerRadius: 13))
+                    .background(Color.judgeRaisedSurface, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
                 }
             }
         }
     }
 }
-

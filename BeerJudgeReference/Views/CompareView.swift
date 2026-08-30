@@ -22,6 +22,7 @@ struct CompareView: View {
             }
             .padding()
         }
+        .background(Color.judgeBackground)
         .navigationTitle("Compare")
     }
 
@@ -32,7 +33,7 @@ struct CompareView: View {
         }
         .pickerStyle(.navigationLink)
         .padding()
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+        .judgeCard(cornerRadius: 16)
     }
 
     private func comparison(_ left: BeerStyle, _ right: BeerStyle) -> some View {
@@ -51,7 +52,7 @@ struct CompareView: View {
 
     private func comparisonRow(_ title: String, _ left: String, _ right: String, prominent: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(title.uppercased()).font(.caption.bold()).tracking(1).foregroundStyle(Color.amberAccent)
+            Text(title.uppercased()).font(.caption.bold()).tracking(1).foregroundStyle(Color.judgeAccent)
             HStack(alignment: .top, spacing: 12) {
                 Text(left).frame(maxWidth: .infinity, alignment: .leading)
                 Divider()
@@ -60,7 +61,6 @@ struct CompareView: View {
             .font(prominent ? .headline : .caption)
         }
         .padding()
-        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+        .judgeCard(cornerRadius: 16)
     }
 }
-

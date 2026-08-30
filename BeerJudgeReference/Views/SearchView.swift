@@ -11,10 +11,12 @@ struct SearchView: View {
                 ContentUnavailableView.search(text: store.query)
             } else {
                 List(store.filteredStyles) { StyleRow(style: $0) }
+                    .judgeScrollBackground()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.judgeBackground)
         .navigationTitle("Search")
         .searchable(text: $store.query, placement: .navigationBarDrawer(displayMode: .always), prompt: "e.g. 21A, saison, diacetyl")
     }
 }
-

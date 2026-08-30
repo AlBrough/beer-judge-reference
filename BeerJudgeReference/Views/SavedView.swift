@@ -9,9 +9,11 @@ struct SavedView: View {
                 ContentUnavailableView("No saved styles", systemImage: "bookmark", description: Text("Bookmark styles you expect on your judging flight for one-tap access."))
             } else {
                 List(store.favourites) { StyleRow(style: $0) }
+                    .judgeScrollBackground()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.judgeBackground)
         .navigationTitle("Saved")
     }
 }
-

@@ -28,12 +28,16 @@ struct LibraryView: View {
                                 }
                                 .padding(.vertical, 4)
                             }
+                            .listRowBackground(Color.judgeSurface)
                         }
                     }
                 }
                 .listSectionSpacing(18)
+                .judgeScrollBackground()
             } else {
                 ContentUnavailableView("Opening guidelines", systemImage: "book.pages", description: Text("Preparing the offline reference."))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.judgeBackground)
             }
         }
         .navigationTitle("Beer Judge")
@@ -43,12 +47,13 @@ struct LibraryView: View {
         VStack(alignment: .leading, spacing: 10) {
             Label("Ready offline", systemImage: "checkmark.circle.fill")
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(.green)
+                .foregroundStyle(Color.judgeAccent)
             Text(dataset.title).font(.title2.bold())
             Text("\(dataset.styles.count) styles · tap any category or search across sensory descriptions and vital statistics.")
                 .font(.subheadline).foregroundStyle(.secondary)
         }
         .padding(.vertical, 8)
+        .listRowBackground(Color.judgeSurface)
     }
 }
 
@@ -65,6 +70,7 @@ struct StyleListView: View {
 
     var body: some View {
         List(filtered) { StyleRow(style: $0) }
+            .judgeScrollBackground()
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $query, prompt: "Filter this category")
@@ -82,7 +88,7 @@ struct StyleRow: View {
                 if !style.displayCode.isEmpty {
                     Text(style.displayCode)
                         .font(.caption.monospaced().weight(.bold))
-                        .foregroundStyle(Color.amberAccent)
+                        .foregroundStyle(Color.judgeAccent)
                         .frame(minWidth: 32, alignment: .leading)
                 }
                 VStack(alignment: .leading, spacing: 3) {
@@ -92,5 +98,6 @@ struct StyleRow: View {
             }
             .padding(.vertical, 4)
         }
+        .listRowBackground(Color.judgeSurface)
     }
 }
