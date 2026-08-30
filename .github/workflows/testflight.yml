@@ -83,6 +83,8 @@ jobs:
             MARKETING_VERSION="${{ inputs.version_name }}" \
             CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
             archive | tee build/archive.log
+          bash scripts/validate-ios-archive.sh \
+            build/BeerJudgeReference.xcarchive/Products/Applications/BeerJudgeReference.app
           xcodebuild \
             -exportArchive \
             -archivePath build/BeerJudgeReference.xcarchive \
@@ -108,5 +110,4 @@ jobs:
           issuer-id: ${{ vars.APPSTORE_ISSUER_ID }}
           api-key-id: ${{ vars.APPSTORE_API_KEY_ID }}
           api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
-          wait-for-processing: "false"
-
+          wait-for-processing: "true"
