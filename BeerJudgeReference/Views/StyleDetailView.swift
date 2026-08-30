@@ -58,7 +58,7 @@ struct StyleDetailView: View {
 
     private var metrics: some View {
         LazyVGrid(
-            columns: [GridItem(.adaptive(minimum: 86), spacing: 8)],
+            columns: [GridItem(.adaptive(minimum: 150), spacing: 8)],
             alignment: .leading,
             spacing: 8
         ) {

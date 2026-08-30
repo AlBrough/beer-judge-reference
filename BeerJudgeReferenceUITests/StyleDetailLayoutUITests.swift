@@ -7,10 +7,18 @@ final class StyleDetailLayoutUITests: XCTestCase {
         app.launchEnvironment["STYLE_DETAIL_PREVIEW_ID"] = "bjcp-25B"
         app.launch()
 
-        for label in ["IBU", "Original gravity", "Final gravity", "ABV", "SRM"] {
-            let metric = app.staticTexts[label]
-            XCTAssertTrue(metric.waitForExistence(timeout: 8), "Missing \(label) metric")
-            XCTAssertTrue(metric.isHittable, "\(label) is outside the visible metric area")
+        let expectedText = [
+            "IBU", "20–35",
+            "Original gravity", "1.048–1.065",
+            "Final gravity", "1.002–1.008",
+            "ABV", "3.5–9.5%",
+            "SRM", "5–22"
+        ]
+
+        for text in expectedText {
+            let metricText = app.staticTexts[text]
+            XCTAssertTrue(metricText.waitForExistence(timeout: 8), "Missing metric text: \(text)")
+            XCTAssertTrue(metricText.isHittable, "Metric text is outside the visible area: \(text)")
         }
     }
 }
