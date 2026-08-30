@@ -20,7 +20,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.brewvault.beerjudge
-        PRODUCT_NAME: Beer Judge Reference
+        PRODUCT_NAME: BeerJudgeReference
         MARKETING_VERSION: "1.0.0"
         CURRENT_PROJECT_VERSION: "1"
         GENERATE_INFOPLIST_FILE: YES
@@ -45,4 +45,3 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: com.brewvault.beerjudge.tests
-

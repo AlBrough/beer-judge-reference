@@ -56,7 +56,7 @@ jobs:
       - name: Capture simulator preview
         run: |
           DEVICE_ID=$(xcrun simctl list devices booted -j | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid')
-          APP_PATH="build/DerivedData/Build/Products/Debug-iphonesimulator/Beer Judge Reference.app"
+          APP_PATH="build/DerivedData/Build/Products/Debug-iphonesimulator/BeerJudgeReference.app"
           test -d "$APP_PATH"
           xcrun simctl install "$DEVICE_ID" "$APP_PATH"
           xcrun simctl launch "$DEVICE_ID" com.brewvault.beerjudge
