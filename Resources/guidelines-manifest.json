@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-08-29T23:59:30.900Z",
+  "datasets": [
+    {
+      "id": "bjcp-2021",
+      "providerID": "bjcp",
+      "providerName": "BJCP",
+      "edition": "2021",
+      "title": "2021 BJCP Beer Style Guidelines",
+      "localResource": "bjcp-2021",
+      "remoteURL": "https://raw.githubusercontent.com/AlBrough/beer-judge-reference/main/Resources/bjcp-2021.json",
+      "sha256": "cb0d6a546f4ea20165ec8ac3bcfee10b6aa87fe39cdd7d6623e00de8400609c0",
+      "attribution": "2021 Beer Judge Certification Program Beer Style Guidelines.",
+      "sourceURL": "https://www.bjcp.org/bjcp-style-guidelines/"
+    },
+    {
+      "id": "ba-2026",
+      "providerID": "ba",
+      "providerName": "Brewers Association",
+      "edition": "2026",
+      "title": "2026 Brewers Association Beer Style Guidelines",
+      "localResource": "ba-2026",
+      "remoteURL": "https://raw.githubusercontent.com/AlBrough/beer-judge-reference/main/Resources/ba-2026.json",
+      "sha256": "822d32f8a37452e393069692800d90017a755d7596b22dffa2219b7f79beb115",
+      "attribution": "Brewers Association 2026 Beer Style Guidelines (https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/) published by the Brewers Association.",
+      "sourceURL": "https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/"
+    }
+  ]
+}

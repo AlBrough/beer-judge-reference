@@ -1,0 +1,46 @@
+name: Check Guideline Updates
+
+on:
+  schedule:
+    - cron: "17 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Refresh and validate provider data
+        run: |
+          npm ci
+          npm run data:sync
+          npm run data:validate
+      - name: Open a reviewable update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- Resources; then
+            echo "No guideline changes detected."
+            exit 0
+          fi
+          BRANCH="automation/guidelines-${GITHUB_RUN_ID}"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git checkout -b "$BRANCH"
+          git add Resources
+          git commit -m "Update guideline snapshots"
+          git push origin "$BRANCH"
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Update guideline snapshots" \
+            --body "Automated upstream guideline refresh. Checksums and schema validation passed; review edition, attribution and text changes before merging."
+

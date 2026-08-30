@@ -1,0 +1,60 @@
+name: iOS CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Validate guideline snapshots
+        run: |
+          npm ci
+          npm run data:validate
+      - name: Generate Xcode project
+        run: |
+          brew list xcodegen >/dev/null 2>&1 || brew install xcodegen
+          xcodegen generate
+      - name: Build without signing
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project BeerJudgeReference.xcodeproj \
+            -scheme BeerJudgeReference \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            build | tee build/build.log
+      - name: Run unit tests
+        run: |
+          DEVICE_ID=$(xcrun simctl list devices available -j | jq -r '[.devices[][] | select(.name | startswith("iPhone"))][0].udid')
+          test -n "$DEVICE_ID" -a "$DEVICE_ID" != "null"
+          set -o pipefail
+          xcodebuild \
+            -project BeerJudgeReference.xcodeproj \
+            -scheme BeerJudgeReference \
+            -destination "platform=iOS Simulator,id=$DEVICE_ID" \
+            -derivedDataPath build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            test | tee build/test.log
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: ios-ci-logs-${{ github.run_number }}
+          path: build/*.log
+          if-no-files-found: ignore
+          retention-days: 14
+

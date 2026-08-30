@@ -1,0 +1,11 @@
+.DS_Store
+.build/
+build/
+DerivedData/
+*.xcarchive
+*.ipa
+BeerJudgeReference.xcodeproj/
+node_modules/
+tshoot/
+tmp/
+
