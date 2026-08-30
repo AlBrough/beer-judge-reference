@@ -59,12 +59,15 @@ jobs:
           APP_PATH="build/DerivedData/Build/Products/Debug-iphonesimulator/BeerJudgeReference.app"
           test -d "$APP_PATH"
           xcrun simctl install "$DEVICE_ID" "$APP_PATH"
+          xcrun simctl terminate "$DEVICE_ID" com.brewvault.beerjudge || true
           xcrun simctl ui "$DEVICE_ID" appearance light
           xcrun simctl launch "$DEVICE_ID" com.brewvault.beerjudge
           sleep 4
           xcrun simctl io "$DEVICE_ID" screenshot build/home-light.png
+          xcrun simctl terminate "$DEVICE_ID" com.brewvault.beerjudge
           xcrun simctl ui "$DEVICE_ID" appearance dark
-          sleep 2
+          xcrun simctl launch "$DEVICE_ID" com.brewvault.beerjudge
+          sleep 4
           xcrun simctl io "$DEVICE_ID" screenshot build/home-dark.png
       - uses: actions/upload-artifact@v7
         if: always()
