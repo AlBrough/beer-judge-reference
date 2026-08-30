@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LibraryView: View {
     @EnvironmentObject private var store: GuidelineStore
+    @Environment(\.judgeColourTheme) private var theme
 
     var body: some View {
         Group {
@@ -16,19 +17,34 @@ struct LibraryView: View {
                         }
                     }
                     Section("Categories") {
-                        ForEach(store.categories, id: \.self) { category in
+                        ForEach(store.browseCategories) { category in
                             NavigationLink {
-                                StyleListView(title: category, styles: store.styles.filter { $0.category == category })
+                                StyleListView(title: category.navigationTitle, styles: category.styles)
                             } label: {
                                 HStack {
-                                    Text(category)
+                                    if Int(category.number) != nil || category.number == "X" {
+                                        Text(category.number)
+                                            .font(.caption.monospaced().weight(.bold))
+                                            .foregroundStyle(theme.accent)
+                                            .frame(minWidth: 32, alignment: .leading)
+                                    }
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(category.name)
+                                        if Int(category.number) == nil,
+                                           category.number != "X",
+                                           !category.number.isEmpty {
+                                            Text(category.number)
+                                                .font(.caption)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
                                     Spacer()
-                                    Text("\(store.styles.filter { $0.category == category }.count)")
+                                    Text("\(category.styles.count)")
                                         .foregroundStyle(.secondary)
                                 }
                                 .padding(.vertical, 4)
                             }
-                            .listRowBackground(Color.judgeSurface)
+                            .listRowBackground(theme.surface)
                         }
                     }
                 }
@@ -37,7 +53,7 @@ struct LibraryView: View {
             } else {
                 ContentUnavailableView("Opening guidelines", systemImage: "book.pages", description: Text("Preparing the offline reference."))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.judgeBackground)
+                    .background(theme.background)
             }
         }
         .navigationTitle("Beer Judge")
@@ -47,13 +63,13 @@ struct LibraryView: View {
         VStack(alignment: .leading, spacing: 10) {
             Label("Ready offline", systemImage: "checkmark.circle.fill")
                 .font(.caption.weight(.semibold))
-                .foregroundStyle(Color.judgeAccent)
+                .foregroundStyle(theme.accent)
             Text(dataset.title).font(.title2.bold())
             Text("\(dataset.styles.count) styles · tap any category or search across sensory descriptions and vital statistics.")
                 .font(.subheadline).foregroundStyle(.secondary)
         }
         .padding(.vertical, 8)
-        .listRowBackground(Color.judgeSurface)
+        .listRowBackground(theme.surface)
     }
 }
 
@@ -79,6 +95,7 @@ struct StyleListView: View {
 
 struct StyleRow: View {
     let style: BeerStyle
+    @Environment(\.judgeColourTheme) private var theme
 
     var body: some View {
         NavigationLink {
@@ -88,7 +105,7 @@ struct StyleRow: View {
                 if !style.displayCode.isEmpty {
                     Text(style.displayCode)
                         .font(.caption.monospaced().weight(.bold))
-                        .foregroundStyle(Color.judgeAccent)
+                        .foregroundStyle(theme.accent)
                         .frame(minWidth: 32, alignment: .leading)
                 }
                 VStack(alignment: .leading, spacing: 3) {
@@ -98,6 +115,6 @@ struct StyleRow: View {
             }
             .padding(.vertical, 4)
         }
-        .listRowBackground(Color.judgeSurface)
+        .listRowBackground(theme.surface)
     }
 }

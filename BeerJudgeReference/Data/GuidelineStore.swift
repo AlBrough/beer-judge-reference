@@ -26,13 +26,14 @@ final class GuidelineStore: ObservableObject {
         return descriptors.first { $0.providerID == dataset.providerID && $0.edition == dataset.edition }
     }
     var styles: [BeerStyle] { dataset?.styles ?? [] }
-    var categories: [String] { Array(Set(styles.map(\.category))).sorted() }
+    var browseCategories: [StyleCategory] { GuidelineOrdering.categories(from: styles) }
+    var orderedStyles: [BeerStyle] { browseCategories.flatMap(\.styles) }
     var filteredStyles: [BeerStyle] {
         let terms = query.normalizedTerms
-        guard !terms.isEmpty else { return styles }
-        return styles.filter { style in terms.allSatisfy(style.searchableText.contains) }
+        guard !terms.isEmpty else { return orderedStyles }
+        return orderedStyles.filter { style in terms.allSatisfy(style.searchableText.contains) }
     }
-    var favourites: [BeerStyle] { styles.filter { favouriteIDs.contains($0.id) } }
+    var favourites: [BeerStyle] { orderedStyles.filter { favouriteIDs.contains($0.id) } }
     var recents: [BeerStyle] { recentIDs.compactMap { id in styles.first { $0.id == id } } }
 
     init() {

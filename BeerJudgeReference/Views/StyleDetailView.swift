@@ -3,6 +3,7 @@ import UIKit
 
 struct StyleDetailView: View {
     @EnvironmentObject private var store: GuidelineStore
+    @Environment(\.judgeColourTheme) private var theme
     @AppStorage("keepAwakeWhileJudging") private var keepAwake = true
     let style: BeerStyle
 
@@ -16,7 +17,7 @@ struct StyleDetailView: View {
                         Text(section.title.uppercased())
                             .font(.caption.weight(.bold))
                             .tracking(1.1)
-                            .foregroundStyle(Color.judgeAccent)
+                            .foregroundStyle(theme.accent)
                         Text(section.body)
                             .font(.body)
                             .lineSpacing(4)
@@ -29,7 +30,7 @@ struct StyleDetailView: View {
             }
             .padding()
         }
-        .background(Color.judgeBackground)
+        .background(theme.background)
         .navigationTitle(style.number.isEmpty ? "Style" : style.number)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -49,7 +50,7 @@ struct StyleDetailView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if !style.number.isEmpty { Text(style.number).font(.headline.monospaced()).foregroundStyle(Color.judgeAccent) }
+            if !style.number.isEmpty { Text(style.number).font(.headline.monospaced()).foregroundStyle(theme.accent) }
             Text(style.name).font(.largeTitle.bold()).minimumScaleFactor(0.75)
             Text(style.category).font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
         }
@@ -76,7 +77,7 @@ struct StyleDetailView: View {
                 .frame(maxWidth: .infinity, minHeight: 42, alignment: .leading)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 9)
-                .background(Color.judgeRaisedSurface, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
+                .background(theme.raisedSurface, in: RoundedRectangle(cornerRadius: 13, style: .continuous))
             }
         }
     }

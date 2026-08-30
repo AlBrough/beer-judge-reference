@@ -4,11 +4,13 @@ import SwiftUI
 struct BeerJudgeReferenceApp: App {
     @StateObject private var store = GuidelineStore()
     @AppStorage("appearancePreference") private var appearancePreference = AppearancePreference.system.rawValue
+    @AppStorage("colourTheme") private var colourTheme = JudgeColourTheme.forest.rawValue
 
     var body: some Scene {
         WindowGroup {
             appRoot
                 .environmentObject(store)
+                .environment(\.judgeColourTheme, selectedColourTheme)
                 .preferredColorScheme(colorScheme)
                 .task { await store.start() }
         }
@@ -19,12 +21,26 @@ struct BeerJudgeReferenceApp: App {
 #if DEBUG
         if let styleID = ProcessInfo.processInfo.environment["STYLE_DETAIL_PREVIEW_ID"] {
             StyleDetailLaunchPreview(styleID: styleID)
+        } else if ProcessInfo.processInfo.environment["APP_PREVIEW_ROUTE"] == "compare-picker" {
+            NavigationStack {
+                CompareStyleSelectionView(title: "First style", selection: .constant(""))
+            }
         } else {
             RootView()
         }
 #else
         RootView()
 #endif
+    }
+
+    private var selectedColourTheme: JudgeColourTheme {
+#if DEBUG
+        if let preview = ProcessInfo.processInfo.environment["COLOUR_THEME_PREVIEW"],
+           let theme = JudgeColourTheme(rawValue: preview) {
+            return theme
+        }
+#endif
+        return JudgeColourTheme(rawValue: colourTheme) ?? .forest
     }
 
     private var colorScheme: ColorScheme? {
@@ -39,6 +55,7 @@ struct BeerJudgeReferenceApp: App {
 #if DEBUG
 private struct StyleDetailLaunchPreview: View {
     @EnvironmentObject private var store: GuidelineStore
+    @Environment(\.judgeColourTheme) private var theme
     let styleID: String
 
     var body: some View {
@@ -48,7 +65,7 @@ private struct StyleDetailLaunchPreview: View {
             } else {
                 ProgressView("Opening style")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.judgeBackground)
+                    .background(theme.background)
             }
         }
     }

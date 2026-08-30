@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct RootView: View {
+    @Environment(\.judgeColourTheme) private var theme
+
     var body: some View {
         TabView {
             NavigationStack { LibraryView() }.tabItem { Label("Browse", systemImage: "books.vertical.fill") }
@@ -9,8 +11,8 @@ struct RootView: View {
             NavigationStack { SavedView() }.tabItem { Label("Saved", systemImage: "bookmark.fill") }
             NavigationStack { SettingsView() }.tabItem { Label("Settings", systemImage: "gearshape.fill") }
         }
-        .tint(.judgeAccent)
-        .toolbarBackground(Color.judgeSurface, for: .tabBar)
+        .tint(theme.accent)
+        .toolbarBackground(theme.surface, for: .tabBar)
         .toolbarBackground(.visible, for: .tabBar)
     }
 }

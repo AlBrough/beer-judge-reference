@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SearchView: View {
     @EnvironmentObject private var store: GuidelineStore
+    @Environment(\.judgeColourTheme) private var theme
 
     var body: some View {
         Group {
@@ -15,7 +16,7 @@ struct SearchView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.judgeBackground)
+        .background(theme.background)
         .navigationTitle("Search")
         .searchable(text: $store.query, placement: .navigationBarDrawer(displayMode: .always), prompt: "e.g. 21A, saison, diacetyl")
     }

@@ -21,4 +21,19 @@ final class StyleDetailLayoutUITests: XCTestCase {
             XCTAssertTrue(metricText.isHittable, "Metric text is outside the visible area: \(text)")
         }
     }
+
+    @MainActor
+    func testComparePickerSearchFindsSaison() {
+        let app = XCUIApplication()
+        app.launchEnvironment["APP_PREVIEW_ROUTE"] = "compare-picker"
+        app.launch()
+
+        let search = app.searchFields["Search by code or style"]
+        XCTAssertTrue(search.waitForExistence(timeout: 8), "Compare style search is unavailable")
+        search.tap()
+        search.typeText("Saison")
+
+        XCTAssertTrue(app.staticTexts["Saison"].waitForExistence(timeout: 3), "Saison was not found")
+        XCTAssertFalse(app.staticTexts["Altbier"].exists, "Compare search did not filter unrelated styles")
+    }
 }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SavedView: View {
     @EnvironmentObject private var store: GuidelineStore
+    @Environment(\.judgeColourTheme) private var theme
 
     var body: some View {
         Group {
@@ -13,7 +14,7 @@ struct SavedView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.judgeBackground)
+        .background(theme.background)
         .navigationTitle("Saved")
     }
 }

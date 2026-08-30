@@ -2,7 +2,9 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var store: GuidelineStore
+    @Environment(\.judgeColourTheme) private var theme
     @AppStorage("appearancePreference") private var appearancePreference = AppearancePreference.system.rawValue
+    @AppStorage("colourTheme") private var colourTheme = JudgeColourTheme.forest.rawValue
     @AppStorage("keepAwakeWhileJudging") private var keepAwake = true
 
     var body: some View {
@@ -18,7 +20,7 @@ struct SettingsView: View {
                                 Text(descriptor.edition).font(.caption).foregroundStyle(.secondary)
                             }
                             Spacer()
-                            if store.selectedDescriptor?.id == descriptor.id { Image(systemName: "checkmark").foregroundStyle(Color.judgeAccent) }
+                            if store.selectedDescriptor?.id == descriptor.id { Image(systemName: "checkmark").foregroundStyle(theme.accent) }
                         }
                     }
                 }
@@ -30,7 +32,7 @@ struct SettingsView: View {
                 .disabled(store.isRefreshing)
                 if let updateMessage = store.updateMessage { Text(updateMessage).font(.caption).foregroundStyle(.secondary) }
             }
-            .listRowBackground(Color.judgeSurface)
+            .listRowBackground(theme.surface)
 
             Section("Judging") {
                 Toggle("Keep screen awake while viewing a style", isOn: $keepAwake)
@@ -38,7 +40,20 @@ struct SettingsView: View {
                     ForEach(AppearancePreference.allCases) { Text($0.label).tag($0.rawValue) }
                 }
             }
-            .listRowBackground(Color.judgeSurface)
+            .listRowBackground(theme.surface)
+
+            Section {
+                Picker("Colour theme", selection: $colourTheme) {
+                    ForEach(JudgeColourTheme.allCases) { option in
+                        Label(option.label, systemImage: option.symbol).tag(option.rawValue)
+                    }
+                }
+            } header: {
+                Text("Colour")
+            } footer: {
+                Text("Choose Forest, Ocean, Amber, or a high-contrast neutral theme. Your light and dark appearance setting still applies.")
+            }
+            .listRowBackground(theme.surface)
 
             if let descriptor = store.selectedDescriptor {
                 Section("Source and attribution") {
@@ -47,7 +62,7 @@ struct SettingsView: View {
                     Text("This independent reference is not affiliated with or endorsed by BJCP or the Brewers Association. Guideline text remains the property of its respective owner.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
-                .listRowBackground(Color.judgeSurface)
+                .listRowBackground(theme.surface)
             }
         }
         .judgeScrollBackground()
