@@ -141,6 +141,7 @@ struct StyleSection: Codable, Hashable, Identifiable {
     let title: String
     let body: String
     var id: String { title }
+    var displayBody: String { DisplayTypography.asciiDashes(in: body) }
 }
 
 struct StyleMetric: Codable, Hashable, Identifiable {
@@ -160,11 +161,20 @@ enum DisplayTypography {
     }
 
     static func spacedRange(_ value: String) -> String {
-        value
-            .replacingOccurrences(of: "\u{2013}", with: "-")
-            .replacingOccurrences(of: "\u{2014}", with: "-")
+        asciiDashes(in: value)
             .replacingOccurrences(
                 of: "\\s*-\\s*",
+                with: " - ",
+                options: .regularExpression
+            )
+    }
+
+    static func asciiDashes(in value: String) -> String {
+        value
+            .replacingOccurrences(of: "\u{2013}", with: " - ")
+            .replacingOccurrences(of: "\u{2014}", with: " - ")
+            .replacingOccurrences(
+                of: "\\s+-\\s+",
                 with: " - ",
                 options: .regularExpression
             )

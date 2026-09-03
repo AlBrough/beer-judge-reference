@@ -69,7 +69,7 @@ struct CompareView: View {
             }
             ForEach(["Overall impression", "Aroma", "Appearance", "Flavor", "Mouthfeel"], id: \.self) { title in
                 if left.sections.contains(where: { $0.title == title }) || right.sections.contains(where: { $0.title == title }) {
-                    comparisonRow(title, left.sections.first { $0.title == title }?.body ?? "-", right.sections.first { $0.title == title }?.body ?? "-")
+                    comparisonRow(title, left.sections.first { $0.title == title }?.displayBody ?? "-", right.sections.first { $0.title == title }?.displayBody ?? "-")
                 }
             }
         }

@@ -18,7 +18,7 @@ struct StyleDetailView: View {
                             .font(.caption.weight(.bold))
                             .tracking(1.1)
                             .foregroundStyle(theme.accent)
-                        Text(section.body)
+                        Text(section.displayBody)
                             .font(.body)
                             .lineSpacing(4)
                             .textSelection(.enabled)
