@@ -41,6 +41,8 @@ struct BeerStyle: Codable, Identifiable, Hashable {
     let tags: [String]
 
     var displayCode: String { number.isEmpty ? categoryNumber : number }
+    var displayName: String { DisplayTypography.uppercaseInitialisms(in: name) }
+    var displayCategory: String { DisplayTypography.uppercaseInitialisms(in: category) }
 
     var searchableText: String {
         ([number, name, category, categoryNumber] + tags + sections.flatMap { [$0.title, $0.body] })
@@ -55,8 +57,9 @@ struct StyleCategory: Identifiable, Hashable {
     let styles: [BeerStyle]
 
     var id: String { "\(number)|\(name)" }
+    var displayName: String { DisplayTypography.uppercaseInitialisms(in: name) }
     var navigationTitle: String {
-        number.isEmpty || Int(number) == nil ? name : "\(number) \(name)"
+        number.isEmpty || Int(number) == nil ? displayName : "\(number) \(displayName)"
     }
 }
 
@@ -138,12 +141,44 @@ struct StyleSection: Codable, Hashable, Identifiable {
     let title: String
     let body: String
     var id: String { title }
+    var displayBody: String { DisplayTypography.asciiDashes(in: body) }
 }
 
 struct StyleMetric: Codable, Hashable, Identifiable {
     let label: String
     let value: String
     var id: String { label }
+    var displayValue: String { DisplayTypography.spacedRange(value) }
+}
+
+enum DisplayTypography {
+    static func uppercaseInitialisms(in value: String) -> String {
+        value.replacingOccurrences(
+            of: "\\bipa\\b",
+            with: "IPA",
+            options: [.regularExpression, .caseInsensitive]
+        )
+    }
+
+    static func spacedRange(_ value: String) -> String {
+        asciiDashes(in: value)
+            .replacingOccurrences(
+                of: "\\s*-\\s*",
+                with: " - ",
+                options: .regularExpression
+            )
+    }
+
+    static func asciiDashes(in value: String) -> String {
+        value
+            .replacingOccurrences(of: "\u{2013}", with: " - ")
+            .replacingOccurrences(of: "\u{2014}", with: " - ")
+            .replacingOccurrences(
+                of: "\\s+-\\s+",
+                with: " - ",
+                options: .regularExpression
+            )
+    }
 }
 
 enum AppearancePreference: String, CaseIterable, Identifiable {

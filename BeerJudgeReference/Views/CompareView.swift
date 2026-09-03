@@ -39,7 +39,7 @@ struct CompareView: View {
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(.secondary)
                     if let selectedStyle {
-                        Text("\(selectedStyle.displayCode) \(selectedStyle.name)")
+                        Text("\(selectedStyle.displayCode) \(selectedStyle.displayName)")
                             .font(.body.weight(.semibold))
                             .foregroundStyle(.primary)
                             .multilineTextAlignment(.leading)
@@ -63,13 +63,13 @@ struct CompareView: View {
 
     private func comparison(_ left: BeerStyle, _ right: BeerStyle) -> some View {
         VStack(spacing: 14) {
-            comparisonRow("Style", left.name, right.name, prominent: true)
+            comparisonRow("Style", left.displayName, right.displayName, prominent: true)
             ForEach(Array(Set((left.metrics + right.metrics).map(\.label))).sorted(), id: \.self) { label in
-                comparisonRow(label, left.metrics.first { $0.label == label }?.value ?? "—", right.metrics.first { $0.label == label }?.value ?? "—")
+                comparisonRow(label, left.metrics.first { $0.label == label }?.displayValue ?? "-", right.metrics.first { $0.label == label }?.displayValue ?? "-")
             }
             ForEach(["Overall impression", "Aroma", "Appearance", "Flavor", "Mouthfeel"], id: \.self) { title in
                 if left.sections.contains(where: { $0.title == title }) || right.sections.contains(where: { $0.title == title }) {
-                    comparisonRow(title, left.sections.first { $0.title == title }?.body ?? "—", right.sections.first { $0.title == title }?.body ?? "—")
+                    comparisonRow(title, left.sections.first { $0.title == title }?.displayBody ?? "-", right.sections.first { $0.title == title }?.displayBody ?? "-")
                 }
             }
         }
@@ -126,10 +126,10 @@ struct CompareStyleSelectionView: View {
                                 .foregroundStyle(theme.accent)
                                 .frame(minWidth: 38, alignment: .leading)
                             VStack(alignment: .leading, spacing: 3) {
-                                Text(style.name)
+                                Text(style.displayName)
                                     .font(.body.weight(.semibold))
                                     .foregroundStyle(.primary)
-                                Text(style.category)
+                                Text(style.displayCategory)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(1)

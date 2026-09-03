@@ -29,7 +29,7 @@ struct LibraryView: View {
                                             .frame(minWidth: 32, alignment: .leading)
                                     }
                                     VStack(alignment: .leading, spacing: 2) {
-                                        Text(category.name)
+                                        Text(category.displayName)
                                         if Int(category.number) == nil,
                                            category.number != "X",
                                            !category.number.isEmpty {
@@ -109,8 +109,8 @@ struct StyleRow: View {
                         .frame(minWidth: 32, alignment: .leading)
                 }
                 VStack(alignment: .leading, spacing: 3) {
-                    Text(style.name).font(.body.weight(.semibold))
-                    Text(style.category).font(.caption).foregroundStyle(.secondary).lineLimit(1)
+                    Text(style.displayName).font(.body.weight(.semibold))
+                    Text(style.displayCategory).font(.caption).foregroundStyle(.secondary).lineLimit(1)
                 }
             }
             .padding(.vertical, 4)

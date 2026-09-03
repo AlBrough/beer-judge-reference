@@ -18,7 +18,7 @@ struct StyleDetailView: View {
                             .font(.caption.weight(.bold))
                             .tracking(1.1)
                             .foregroundStyle(theme.accent)
-                        Text(section.body)
+                        Text(section.displayBody)
                             .font(.body)
                             .lineSpacing(4)
                             .textSelection(.enabled)
@@ -51,8 +51,8 @@ struct StyleDetailView: View {
     private var header: some View {
         VStack(alignment: .leading, spacing: 8) {
             if !style.number.isEmpty { Text(style.number).font(.headline.monospaced()).foregroundStyle(theme.accent) }
-            Text(style.name).font(.largeTitle.bold()).minimumScaleFactor(0.75)
-            Text(style.category).font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
+            Text(style.displayName).font(.largeTitle.bold()).minimumScaleFactor(0.75)
+            Text(style.displayCategory).font(.subheadline.weight(.medium)).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -69,7 +69,7 @@ struct StyleDetailView: View {
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(.secondary)
                         .lineLimit(2)
-                    Text(metric.value)
+                    Text(metric.displayValue)
                         .font(.subheadline.monospaced().weight(.bold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.75)

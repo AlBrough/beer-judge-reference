@@ -87,7 +87,7 @@ final class GuidelineStore: ObservableObject {
             }
             updateMessage = "Guidelines are up to date."
         } catch {
-            updateMessage = "Offline — using the latest guidelines saved on this device."
+            updateMessage = "Offline - using the latest guidelines saved on this device."
         }
     }
 
