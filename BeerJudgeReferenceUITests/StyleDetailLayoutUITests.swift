@@ -8,11 +8,11 @@ final class StyleDetailLayoutUITests: XCTestCase {
         app.launch()
 
         let expectedText = [
-            "IBU", "20–35",
-            "Original gravity", "1.048–1.065",
-            "Final gravity", "1.002–1.008",
-            "ABV", "3.5–9.5%",
-            "SRM", "5–22"
+            "IBU", "20 - 35",
+            "Original gravity", "1.048 - 1.065",
+            "Final gravity", "1.002 - 1.008",
+            "ABV", "3.5 - 9.5%",
+            "SRM", "5 - 22"
         ]
 
         for text in expectedText {

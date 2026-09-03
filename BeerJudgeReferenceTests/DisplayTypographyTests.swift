@@ -1,0 +1,16 @@
+import XCTest
+@testable import BeerJudgeReference
+
+final class DisplayTypographyTests: XCTestCase {
+    func testIPAIsAlwaysUppercase() {
+        XCTAssertEqual(DisplayTypography.uppercaseInitialisms(in: "Ipa"), "IPA")
+        XCTAssertEqual(DisplayTypography.uppercaseInitialisms(in: "Specialty ipa"), "Specialty IPA")
+        XCTAssertEqual(DisplayTypography.uppercaseInitialisms(in: "American IPA"), "American IPA")
+    }
+
+    func testMetricRangesUseSpacedASCIIHyphen() {
+        XCTAssertEqual(DisplayTypography.spacedRange("15-20"), "15 - 20")
+        XCTAssertEqual(DisplayTypography.spacedRange("15\u{2013}20"), "15 - 20")
+        XCTAssertEqual(DisplayTypography.spacedRange("15 \u{2014} 20"), "15 - 20")
+    }
+}
