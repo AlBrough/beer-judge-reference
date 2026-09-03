@@ -2,6 +2,16 @@ import XCTest
 
 final class StyleDetailLayoutUITests: XCTestCase {
     @MainActor
+    func testIPACategoryIsUppercase() {
+        let app = XCUIApplication()
+        app.launchEnvironment["STYLE_DETAIL_PREVIEW_ID"] = "bjcp-21A"
+        app.launch()
+
+        XCTAssertTrue(app.staticTexts["IPA"].waitForExistence(timeout: 8), "IPA category was not uppercase")
+        XCTAssertFalse(app.staticTexts["Ipa"].exists, "Sentence-cased IPA category was displayed")
+    }
+
+    @MainActor
     func testAllSaisonMetricsAreVisibleWithoutScrolling() {
         let app = XCUIApplication()
         app.launchEnvironment["STYLE_DETAIL_PREVIEW_ID"] = "bjcp-25B"
