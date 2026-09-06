@@ -36,6 +36,7 @@ struct BeerStyle: Codable, Identifiable, Hashable {
     let name: String
     let category: String
     let categoryNumber: String
+    let sortOrder: Int?
     let sections: [StyleSection]
     let metrics: [StyleMetric]
     let tags: [String]
@@ -105,6 +106,11 @@ enum GuidelineOrdering {
     static func orderedStyles(_ styles: [BeerStyle]) -> [BeerStyle] {
         styles.enumerated()
             .sorted { left, right in
+                if let leftOrder = left.element.sortOrder,
+                   let rightOrder = right.element.sortOrder,
+                   leftOrder != rightOrder {
+                    return leftOrder < rightOrder
+                }
                 let codeOrder = left.element.displayCode.localizedStandardCompare(right.element.displayCode)
                 if codeOrder != .orderedSame { return codeOrder == .orderedAscending }
                 return left.offset < right.offset

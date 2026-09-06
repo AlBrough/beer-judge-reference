@@ -47,6 +47,8 @@ targets:
         buildPhase: resources
       - path: Resources/bjcp-2021.json
         buildPhase: resources
+      - path: Resources/aabc-2025.json
+        buildPhase: resources
       - path: Resources/ba-2026.json
         buildPhase: resources
     dependencies:

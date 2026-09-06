@@ -5,12 +5,14 @@ import { load } from 'cheerio'
 const root = new URL('../', import.meta.url)
 const resourcesDirectory = new URL('Resources/', root)
 const bjcpSource = 'https://raw.githubusercontent.com/BrewVault/bjcp-json/main/data.json'
+const aabcSource = 'https://raw.githubusercontent.com/BrewVault/aabc2025-json/main/data.json'
 const baSource = 'https://www.brewersassociation.org/edu/brewers-association-beer-style-guidelines/'
 
 await mkdir(resourcesDirectory, { recursive: true })
 
-const [bjcpStyles, baHTML] = await Promise.all([
+const [bjcpStyles, aabcInput, baHTML] = await Promise.all([
   fetchJSON(bjcpSource),
+  loadAABCInput(),
   fetchText(baSource),
 ])
 
@@ -36,11 +38,24 @@ const ba = {
   styles: parseBAStyles(baHTML),
 }
 
+const aabc = {
+  schemaVersion: 1,
+  providerID: 'aabc',
+  providerName: 'AABC',
+  edition: '2025',
+  title: 'AABC 2025 Style Guidelines',
+  sourceURL: 'https://aabc.org.au/',
+  attribution: 'AABC 2025 Categories, compiling the BJCP 2021 Beer, BJCP 2015 Mead and BJCP 2025 Cider style guidelines.',
+  styles: aabcInput.normalised ? aabcInput.styles : normaliseAABCDataset(aabcInput.styles),
+}
+
 if (bjcp.styles.length < 120) throw new Error(`BJCP import unexpectedly produced ${bjcp.styles.length} styles`)
+if (aabc.styles.length !== 152) throw new Error(`AABC import unexpectedly produced ${aabc.styles.length} styles`)
 if (ba.styles.length < 100) throw new Error(`BA import unexpectedly produced ${ba.styles.length} styles`)
 
 const datasets = [
   await writeDataset('bjcp-2021.json', bjcp),
+  await writeDataset('aabc-2025.json', aabc),
   await writeDataset('ba-2026.json', ba),
 ]
 
@@ -66,6 +81,7 @@ const manifest = {
 
 await writeFile(new URL('guidelines-manifest.json', resourcesDirectory), `${JSON.stringify(manifest, null, 2)}\n`)
 console.log(`BJCP ${bjcp.edition}: ${bjcp.styles.length} styles`)
+console.log(`AABC ${aabc.edition}: ${aabc.styles.length} styles`)
 console.log(`BA ${ba.edition}: ${ba.styles.length} styles`)
 
 function normaliseBJCPStyle(style) {
@@ -101,6 +117,82 @@ function normaliseBJCPStyle(style) {
     metrics,
     tags: String(style.tags ?? '').split(',').map(clean).filter(Boolean),
   }
+}
+
+function normaliseAABCDataset(styles) {
+  const supportingRecords = new Map(
+    styles.filter((style) => style.competitionentry === false).map((style) => [style.id, style]),
+  )
+  return styles
+    .filter((style) => style.competitionentry !== false)
+    .map((style, index) => normaliseAABCStyle(style, index, supportingRecords.get(style.parentstyleid)))
+}
+
+function normaliseAABCStyle(style, index, supportingRecord) {
+  const sections = [
+    ['Preamble', style.preamble],
+    ['Overall impression', style.overallimpression],
+    ['Aroma and flavor', style.aromaandflavor],
+    ['Aroma', style.aroma],
+    ['Appearance', style.appearance],
+    ['Flavor', style.flavor],
+    ['Mouthfeel', style.mouthfeel],
+    ['Comments', style.comments],
+    ['Entry instructions', style.entryinstructions],
+    ['History', style.history],
+    ['Characteristic ingredients', style.characteristicingredients],
+    ['Ingredients', style.ingredients],
+    ['Varieties', style.varieties],
+    ['Style comparison', style.stylecomparison],
+    ['Currently defined types', style.currentlydefinedtypes],
+    ['Strength classifications', style.strengthclassifications],
+    ['Commercial examples', style.commercialexamples],
+  ].filter(([, value]) => meaningful(value)).map(([title, body]) => ({ title, body: clean(body) }))
+
+  const metrics = [
+    rangeMetric('IBU', style.ibumin, style.ibumax),
+    rangeMetric('Original gravity', style.ogmin, style.ogmax),
+    rangeMetric('Final gravity', style.fgmin, style.fgmax),
+    rangeMetric('ABV', style.abvmin, style.abvmax, '%'),
+    rangeMetric('SRM', style.srmmin, style.srmmax),
+  ].filter(Boolean)
+
+  if (meaningful(style.vitalstatistics) && metrics.length === 0) {
+    sections.push({ title: 'Vital statistics', body: clean(style.vitalstatistics) })
+  }
+  if (supportingRecord) sections.push(...aabcSupportingSections(supportingRecord))
+
+  const sourceTags = String(style.tags ?? '').split(',').map(clean).filter(Boolean)
+  return {
+    id: clean(style.id) || `aabc-${index + 1}`,
+    number: clean(style.number),
+    name: clean(style.name),
+    category: clean(style.category),
+    categoryNumber: clean(style.categorynumber),
+    sortOrder: Number(style.judgingorder) || index + 1,
+    sections,
+    metrics,
+    tags: [...new Set([clean(style.beveragetype), clean(style.sourceguideline), ...sourceTags].filter(Boolean))],
+  }
+}
+
+function aabcSupportingSections(style) {
+  return [
+    ['Preamble', style.preamble],
+    ['Overall impression', style.overallimpression],
+    ['Aroma', style.aroma],
+    ['Appearance', style.appearance],
+    ['Flavor', style.flavor],
+    ['Mouthfeel', style.mouthfeel],
+    ['Comments', style.comments],
+    ['Entry instructions', style.entryinstructions],
+    ['Currently defined types', style.currentlydefinedtypes],
+    ['Strength classifications', style.strengthclassifications],
+    ['Vital statistics', style.vitalstatistics],
+  ].filter(([, value]) => meaningful(value)).map(([title, body]) => ({
+    title: `Specialty IPA guidance - ${title}`,
+    body: clean(body),
+  }))
 }
 
 function parseBAStyles(html) {
@@ -148,7 +240,7 @@ function readBAField(item, sections, metrics) {
 function rangeMetric(label, minimum, maximum, suffix = '') {
   if (!meaningful(minimum) && !meaningful(maximum)) return null
   const values = [minimum, maximum].filter(meaningful).map(clean)
-  return { label, value: `${values.join('–')}${suffix}` }
+  return { label, value: `${values.join(' - ')}${suffix}` }
 }
 
 function meaningful(value) {
@@ -170,10 +262,32 @@ async function fetchJSON(url) {
   return JSON.parse(await fetchText(url))
 }
 
-async function fetchText(url) {
-  const response = await fetch(url, { headers: { 'user-agent': 'BeerJudgeReference-data-sync/1.0' } })
+async function fetchText(url, headers = {}) {
+  const response = await fetch(url, { headers: { 'user-agent': 'BeerJudgeReference-data-sync/1.0', ...headers } })
   if (!response.ok) throw new Error(`${response.status} fetching ${url}`)
   return response.text()
+}
+
+async function loadAABCInput() {
+  const token = process.env.AABC_GITHUB_TOKEN
+  try {
+    const headers = token ? { authorization: `Bearer ${token}` } : {}
+    return { styles: JSON.parse(await fetchText(aabcSource, headers)), normalised: false }
+  } catch (remoteError) {
+    try {
+      const local = JSON.parse(await readFile(new URL('../../aabc2025-json/data.json', import.meta.url), 'utf8'))
+      console.warn('AABC source is private - using the local sibling repository.')
+      return { styles: local, normalised: false }
+    } catch {
+      try {
+        const existing = JSON.parse(await readFile(new URL('aabc-2025.json', resourcesDirectory), 'utf8'))
+        console.warn('AABC source is private - retaining the current validated snapshot.')
+        return { styles: existing.styles, normalised: true }
+      } catch {
+        throw remoteError
+      }
+    }
+  }
 }
 
 async function readPreviousManifest() {

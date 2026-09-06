@@ -19,6 +19,8 @@ jobs:
           node-version: "24"
           cache: npm
       - name: Refresh and validate provider data
+        env:
+          AABC_GITHUB_TOKEN: ${{ secrets.AABC_GUIDELINES_TOKEN }}
         run: |
           npm ci
           npm run data:sync
@@ -43,4 +45,3 @@ jobs:
             --head "$BRANCH" \
             --title "Update guideline snapshots" \
             --body "Automated upstream guideline refresh. Checksums and schema validation passed; review edition, attribution and text changes before merging."
-

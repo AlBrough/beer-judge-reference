@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "publishedAt": "2026-08-29T23:59:30.900Z",
+  "publishedAt": "2026-09-06T08:29:05.881Z",
   "datasets": [
     {
       "id": "bjcp-2021",
@@ -10,9 +10,21 @@
       "title": "2021 BJCP Beer Style Guidelines",
       "localResource": "bjcp-2021",
       "remoteURL": "https://raw.githubusercontent.com/AlBrough/beer-judge-reference/main/Resources/bjcp-2021.json",
-      "sha256": "cb0d6a546f4ea20165ec8ac3bcfee10b6aa87fe39cdd7d6623e00de8400609c0",
+      "sha256": "f455b60b740b577379dd364dc7de766dd988d113114c39ccc3528cff9e927c49",
       "attribution": "2021 Beer Judge Certification Program Beer Style Guidelines.",
       "sourceURL": "https://www.bjcp.org/bjcp-style-guidelines/"
+    },
+    {
+      "id": "aabc-2025",
+      "providerID": "aabc",
+      "providerName": "AABC",
+      "edition": "2025",
+      "title": "AABC 2025 Style Guidelines",
+      "localResource": "aabc-2025",
+      "remoteURL": "https://raw.githubusercontent.com/AlBrough/beer-judge-reference/main/Resources/aabc-2025.json",
+      "sha256": "22e21dfbe59873fa73ddffbf12ba620d48961ad88a836ac04df5ea9d9c8c86ff",
+      "attribution": "AABC 2025 Categories, compiling the BJCP 2021 Beer, BJCP 2015 Mead and BJCP 2025 Cider style guidelines.",
+      "sourceURL": "https://aabc.org.au/"
     },
     {
       "id": "ba-2026",

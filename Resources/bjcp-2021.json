@@ -58,23 +58,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–50"
+          "value": "25 - 50"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.052"
+          "value": "1.044 - 1.052"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.3–5.5%"
+          "value": "4.3 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "9–17"
+          "value": "9 - 17"
         }
       ],
       "tags": [
@@ -229,23 +229,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–40"
+          "value": "25 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.045–1.060"
+          "value": "1.045 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.015"
+          "value": "1.010 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.2%"
+          "value": "4.5 - 6.2%"
         },
         {
           "label": "SRM",
-          "value": "10–17"
+          "value": "10 - 17"
         }
       ],
       "tags": [
@@ -310,23 +310,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "50–100"
+          "value": "50 - 100"
         },
         {
           "label": "Original gravity",
-          "value": "1.080–1.120"
+          "value": "1.080 - 1.120"
         },
         {
           "label": "Final gravity",
-          "value": "1.016–1.030"
+          "value": "1.016 - 1.030"
         },
         {
           "label": "ABV",
-          "value": "8.0–12.0%"
+          "value": "8.0 - 12.0%"
         },
         {
           "label": "SRM",
-          "value": "9–18"
+          "value": "9 - 18"
         }
       ],
       "tags": [
@@ -391,23 +391,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.045–1.060"
+          "value": "1.045 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.016"
+          "value": "1.010 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "4.3–6.2%"
+          "value": "4.3 - 6.2%"
         },
         {
           "label": "SRM",
-          "value": "18–35"
+          "value": "18 - 35"
         }
       ],
       "tags": [
@@ -472,23 +472,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "40–70"
+          "value": "40 - 70"
         },
         {
           "label": "Original gravity",
-          "value": "1.056–1.070"
+          "value": "1.056 - 1.070"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "5.5–7.5%"
+          "value": "5.5 - 7.5%"
         },
         {
           "label": "SRM",
-          "value": "6–14"
+          "value": "6 - 14"
         }
       ],
       "tags": [
@@ -553,23 +553,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–18"
+          "value": "8 - 18"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.050"
+          "value": "1.040 - 1.050"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.010"
+          "value": "1.004 - 1.010"
         },
         {
           "label": "ABV",
-          "value": "4.2–5.3%"
+          "value": "4.2 - 5.3%"
         },
         {
           "label": "SRM",
-          "value": "2–3.5"
+          "value": "2 - 3.5"
         }
       ],
       "tags": [
@@ -634,23 +634,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–12"
+          "value": "8 - 12"
         },
         {
           "label": "Original gravity",
-          "value": "1.028–1.040"
+          "value": "1.028 - 1.040"
         },
         {
           "label": "Final gravity",
-          "value": "0.998–1.008"
+          "value": "0.998 - 1.008"
         },
         {
           "label": "ABV",
-          "value": "2.8–4.2%"
+          "value": "2.8 - 4.2%"
         },
         {
           "label": "SRM",
-          "value": "2–3"
+          "value": "2 - 3"
         }
       ],
       "tags": [
@@ -715,23 +715,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–50"
+          "value": "30 - 50"
         },
         {
           "label": "Original gravity",
-          "value": "1.045–1.060"
+          "value": "1.045 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.015"
+          "value": "1.010 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.2%"
+          "value": "4.5 - 6.2%"
         },
         {
           "label": "SRM",
-          "value": "5–10"
+          "value": "5 - 10"
         }
       ],
       "tags": [
@@ -796,23 +796,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–50"
+          "value": "25 - 50"
         },
         {
           "label": "Original gravity",
-          "value": "1.050–1.070"
+          "value": "1.050 - 1.070"
         },
         {
           "label": "Final gravity",
-          "value": "1.012–1.018"
+          "value": "1.012 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "4.8–6.5%"
+          "value": "4.8 - 6.5%"
         },
         {
           "label": "SRM",
-          "value": "22–40"
+          "value": "22 - 40"
         }
       ],
       "tags": [
@@ -878,23 +878,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "35–75"
+          "value": "35 - 75"
         },
         {
           "label": "Original gravity",
-          "value": "1.050–1.075"
+          "value": "1.050 - 1.075"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.022"
+          "value": "1.010 - 1.022"
         },
         {
           "label": "ABV",
-          "value": "5.0–7.0%"
+          "value": "5.0 - 7.0%"
         },
         {
           "label": "SRM",
-          "value": "30–40"
+          "value": "30 - 40"
         }
       ],
       "tags": [
@@ -960,23 +960,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "50–100"
+          "value": "50 - 100"
         },
         {
           "label": "Original gravity",
-          "value": "1.062–1.090"
+          "value": "1.062 - 1.090"
         },
         {
           "label": "Final gravity",
-          "value": "1.014–1.024"
+          "value": "1.014 - 1.024"
         },
         {
           "label": "ABV",
-          "value": "6.3–10.0%"
+          "value": "6.3 - 10.0%"
         },
         {
           "label": "SRM",
-          "value": "7–18"
+          "value": "7 - 18"
         }
       ],
       "tags": [
@@ -1041,23 +1041,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–30"
+          "value": "15 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.055"
+          "value": "1.040 - 1.055"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.013"
+          "value": "1.008 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "4.0–5.5%"
+          "value": "4.0 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -1121,23 +1121,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.038–1.050"
+          "value": "1.038 - 1.050"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.006"
+          "value": "1.004 - 1.006"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.0%"
+          "value": "4.5 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "4–7"
+          "value": "4 - 7"
         }
       ],
       "tags": [
@@ -1251,23 +1251,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–40"
+          "value": "20 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.060–1.090"
+          "value": "1.060 - 1.090"
         },
         {
           "label": "Final gravity",
-          "value": "1.016–1.024"
+          "value": "1.016 - 1.024"
         },
         {
           "label": "ABV",
-          "value": "6.5–9.5%"
+          "value": "6.5 - 9.5%"
         },
         {
           "label": "SRM",
-          "value": "17–30"
+          "value": "17 - 30"
         }
       ],
       "tags": [
@@ -1332,23 +1332,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–30"
+          "value": "15 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.062–1.075"
+          "value": "1.062 - 1.075"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.018"
+          "value": "1.008 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "6.0–7.5%"
+          "value": "6.0 - 7.5%"
         },
         {
           "label": "SRM",
-          "value": "4–6"
+          "value": "4 - 6"
         }
       ],
       "tags": [
@@ -1415,23 +1415,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.075–1.110"
+          "value": "1.075 - 1.110"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.024"
+          "value": "1.010 - 1.024"
         },
         {
           "label": "ABV",
-          "value": "8.0–12.0%"
+          "value": "8.0 - 12.0%"
         },
         {
           "label": "SRM",
-          "value": "12–22"
+          "value": "12 - 22"
         }
       ],
       "tags": [
@@ -1494,23 +1494,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–25"
+          "value": "15 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.062–1.075"
+          "value": "1.062 - 1.075"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.018"
+          "value": "1.008 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "6.0–7.6%"
+          "value": "6.0 - 7.6%"
         },
         {
           "label": "SRM",
-          "value": "10–17"
+          "value": "10 - 17"
         }
       ],
       "tags": [
@@ -1573,23 +1573,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "22–35"
+          "value": "22 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.070–1.095"
+          "value": "1.070 - 1.095"
         },
         {
           "label": "Final gravity",
-          "value": "1.005–1.016"
+          "value": "1.005 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "7.5–10.5%"
+          "value": "7.5 - 10.5%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -1652,23 +1652,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.054"
+          "value": "1.048 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.014"
+          "value": "1.010 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.8–5.5%"
+          "value": "4.8 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "8–14"
+          "value": "8 - 14"
         }
       ],
       "tags": [
@@ -1732,23 +1732,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–45"
+          "value": "25 - 45"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.054"
+          "value": "1.044 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.010"
+          "value": "1.004 - 1.010"
         },
         {
           "label": "ABV",
-          "value": "4.8–6.0%"
+          "value": "4.8 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "3–5"
+          "value": "3 - 5"
         }
       ],
       "tags": [
@@ -1812,23 +1812,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–40"
+          "value": "20 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.075–1.085"
+          "value": "1.075 - 1.085"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "7.5–9.5%"
+          "value": "7.5 - 9.5%"
         },
         {
           "label": "SRM",
-          "value": "4.5–7"
+          "value": "4.5 - 7"
         }
       ],
       "tags": [
@@ -1891,23 +1891,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "3–8"
+          "value": "3 - 8"
         },
         {
           "label": "Original gravity",
-          "value": "1.028–1.032"
+          "value": "1.028 - 1.032"
         },
         {
           "label": "Final gravity",
-          "value": "1.003–1.006"
+          "value": "1.003 - 1.006"
         },
         {
           "label": "ABV",
-          "value": "2.8–3.8%"
+          "value": "2.8 - 3.8%"
         },
         {
           "label": "SRM",
-          "value": "2–3"
+          "value": "2 - 3"
         }
       ],
       "tags": [
@@ -1971,23 +1971,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–40"
+          "value": "25 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.048"
+          "value": "1.040 - 1.048"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.012"
+          "value": "1.008 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "3.8–4.6%"
+          "value": "3.8 - 4.6%"
         },
         {
           "label": "SRM",
-          "value": "8–16"
+          "value": "8 - 16"
         }
       ],
       "tags": [
@@ -2055,23 +2055,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–28"
+          "value": "18 - 28"
         },
         {
           "label": "Original gravity",
-          "value": "1.060–1.080"
+          "value": "1.060 - 1.080"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.016"
+          "value": "1.008 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "6.0–8.5%"
+          "value": "6.0 - 8.5%"
         },
         {
           "label": "SRM",
-          "value": "6–19"
+          "value": "6 - 19"
         }
       ],
       "tags": [
@@ -2137,23 +2137,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–28"
+          "value": "15 - 28"
         },
         {
           "label": "Original gravity",
-          "value": "1.038–1.054"
+          "value": "1.038 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.013"
+          "value": "1.008 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "3.8–5.5%"
+          "value": "3.8 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -2277,23 +2277,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.052"
+          "value": "1.040 - 1.052"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.013"
+          "value": "1.008 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "4.2–5.9%"
+          "value": "4.2 - 5.9%"
         },
         {
           "label": "SRM",
-          "value": "12–22"
+          "value": "12 - 22"
         }
       ],
       "tags": [
@@ -2357,23 +2357,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–45"
+          "value": "20 - 45"
         },
         {
           "label": "Original gravity",
-          "value": "1.038–1.053"
+          "value": "1.038 - 1.053"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.012"
+          "value": "1.006 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "3.8–5.0%"
+          "value": "3.8 - 5.0%"
         },
         {
           "label": "SRM",
-          "value": "2–5"
+          "value": "2 - 5"
         }
       ],
       "tags": [
@@ -2438,23 +2438,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–60"
+          "value": "30 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.055–1.080"
+          "value": "1.055 - 1.080"
         },
         {
           "label": "Final gravity",
-          "value": "1.015–1.022"
+          "value": "1.015 - 1.022"
         },
         {
           "label": "ABV",
-          "value": "5.5–8.0%"
+          "value": "5.5 - 8.0%"
         },
         {
           "label": "SRM",
-          "value": "8–22"
+          "value": "8 - 22"
         }
       ],
       "tags": [
@@ -2518,23 +2518,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–45"
+          "value": "30 - 45"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.054"
+          "value": "1.048 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.011–1.014"
+          "value": "1.011 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.5–5.5%"
+          "value": "4.5 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "9–14"
+          "value": "9 - 14"
         }
       ],
       "tags": [
@@ -2698,23 +2698,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–20"
+          "value": "8 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.042–1.055"
+          "value": "1.042 - 1.055"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.012"
+          "value": "1.006 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.2–5.6%"
+          "value": "4.2 - 5.6%"
         },
         {
           "label": "SRM",
-          "value": "2–5"
+          "value": "2 - 5"
         }
       ],
       "tags": [
@@ -2778,23 +2778,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.060"
+          "value": "1.044 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.013–1.017"
+          "value": "1.013 - 1.017"
         },
         {
           "label": "ABV",
-          "value": "4.4–5.8%"
+          "value": "4.4 - 5.8%"
         },
         {
           "label": "SRM",
-          "value": "10–16"
+          "value": "10 - 16"
         }
       ],
       "tags": [
@@ -2859,23 +2859,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–34"
+          "value": "18 - 34"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.060"
+          "value": "1.044 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.013–1.017"
+          "value": "1.013 - 1.017"
         },
         {
           "label": "ABV",
-          "value": "4.4–5.8%"
+          "value": "4.4 - 5.8%"
         },
         {
           "label": "SRM",
-          "value": "17–35"
+          "value": "17 - 35"
         }
       ],
       "tags": [
@@ -2940,23 +2940,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.028–1.044"
+          "value": "1.028 - 1.044"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "3.0–4.1%"
+          "value": "3.0 - 4.1%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -3022,23 +3022,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–45"
+          "value": "30 - 45"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.060"
+          "value": "1.044 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.013–1.017"
+          "value": "1.013 - 1.017"
         },
         {
           "label": "ABV",
-          "value": "4.2–5.8%"
+          "value": "4.2 - 5.8%"
         },
         {
           "label": "SRM",
-          "value": "3.5–6"
+          "value": "3.5 - 6"
         }
       ],
       "tags": [
@@ -3104,23 +3104,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–25"
+          "value": "10 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.030–1.038"
+          "value": "1.030 - 1.038"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.013"
+          "value": "1.008 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "3.0–3.8%"
+          "value": "3.0 - 3.8%"
         },
         {
           "label": "SRM",
-          "value": "14–25"
+          "value": "14 - 25"
         }
       ],
       "tags": [
@@ -3188,23 +3188,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "16–26"
+          "value": "16 - 26"
         },
         {
           "label": "Original gravity",
-          "value": "1.072–1.112"
+          "value": "1.072 - 1.112"
         },
         {
           "label": "Final gravity",
-          "value": "1.016–1.024"
+          "value": "1.016 - 1.024"
         },
         {
           "label": "ABV",
-          "value": "7.0–10.0%"
+          "value": "7.0 - 10.0%"
         },
         {
           "label": "SRM",
-          "value": "6–25"
+          "value": "6 - 25"
         }
       ],
       "tags": [
@@ -3270,23 +3270,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "60–100"
+          "value": "60 - 100"
         },
         {
           "label": "Original gravity",
-          "value": "1.065–1.085"
+          "value": "1.065 - 1.085"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.018"
+          "value": "1.008 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "7.5–10.0%"
+          "value": "7.5 - 10.0%"
         },
         {
           "label": "SRM",
-          "value": "6–14"
+          "value": "6 - 14"
         }
       ],
       "tags": [
@@ -3351,23 +3351,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–27"
+          "value": "20 - 27"
         },
         {
           "label": "Original gravity",
-          "value": "1.064–1.072"
+          "value": "1.064 - 1.072"
         },
         {
           "label": "Final gravity",
-          "value": "1.013–1.019"
+          "value": "1.013 - 1.019"
         },
         {
           "label": "ABV",
-          "value": "6.3–7.2%"
+          "value": "6.3 - 7.2%"
         },
         {
           "label": "SRM",
-          "value": "14–22"
+          "value": "14 - 22"
         }
       ],
       "tags": [
@@ -3432,23 +3432,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–18"
+          "value": "10 - 18"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.057"
+          "value": "1.044 - 1.057"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.3–5.6%"
+          "value": "4.3 - 5.6%"
         },
         {
           "label": "SRM",
-          "value": "14–23"
+          "value": "14 - 23"
         }
       ],
       "tags": [
@@ -3512,23 +3512,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–35"
+          "value": "25 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.078–1.120"
+          "value": "1.078 - 1.120"
         },
         {
           "label": "Final gravity",
-          "value": "1.020–1.035"
+          "value": "1.020 - 1.035"
         },
         {
           "label": "ABV",
-          "value": "9.0–14.0%"
+          "value": "9.0 - 14.0%"
         },
         {
           "label": "SRM",
-          "value": "17–30"
+          "value": "17 - 30"
         }
       ],
       "tags": [
@@ -3593,23 +3593,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "35–70"
+          "value": "35 - 70"
         },
         {
           "label": "Original gravity",
-          "value": "1.080–1.120"
+          "value": "1.080 - 1.120"
         },
         {
           "label": "Final gravity",
-          "value": "1.018–1.030"
+          "value": "1.018 - 1.030"
         },
         {
           "label": "ABV",
-          "value": "8.0–12.0%"
+          "value": "8.0 - 12.0%"
         },
         {
           "label": "SRM",
-          "value": "8–22"
+          "value": "8 - 22"
         }
       ],
       "tags": [
@@ -3673,23 +3673,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "40–60"
+          "value": "40 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.050–1.070"
+          "value": "1.050 - 1.070"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.015"
+          "value": "1.010 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "5.0–7.5%"
+          "value": "5.0 - 7.5%"
         },
         {
           "label": "SRM",
-          "value": "6–14"
+          "value": "6 - 14"
         }
       ],
       "tags": [
@@ -3754,23 +3754,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–35"
+          "value": "18 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.052"
+          "value": "1.040 - 1.052"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.0–5.4%"
+          "value": "4.0 - 5.4%"
         },
         {
           "label": "SRM",
-          "value": "20–30"
+          "value": "20 - 30"
         }
       ],
       "tags": [
@@ -3880,23 +3880,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–25"
+          "value": "18 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.054–1.057"
+          "value": "1.054 - 1.057"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.012"
+          "value": "1.010 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "5.8–6.3%"
+          "value": "5.8 - 6.3%"
         },
         {
           "label": "SRM",
-          "value": "4–6"
+          "value": "4 - 6"
         }
       ],
       "tags": [
@@ -3961,23 +3961,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–25"
+          "value": "10 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.057"
+          "value": "1.048 - 1.057"
         },
         {
           "label": "Final gravity",
-          "value": "1.002–1.012"
+          "value": "1.002 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.6–6.5%"
+          "value": "4.6 - 6.5%"
         },
         {
           "label": "SRM",
-          "value": "10–17"
+          "value": "10 - 17"
         }
       ],
       "tags": [
@@ -4042,23 +4042,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "50–70"
+          "value": "50 - 70"
         },
         {
           "label": "Original gravity",
-          "value": "1.056–1.075"
+          "value": "1.056 - 1.075"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.018"
+          "value": "1.010 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "6.3–8.0%"
+          "value": "6.3 - 8.0%"
         },
         {
           "label": "SRM",
-          "value": "30–40"
+          "value": "30 - 40"
         }
       ],
       "tags": [
@@ -4173,23 +4173,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "0–10"
+          "value": "0 - 10"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.060"
+          "value": "1.040 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.000–1.010"
+          "value": "1.000 - 1.010"
         },
         {
           "label": "ABV",
-          "value": "5.0–7.0%"
+          "value": "5.0 - 7.0%"
         },
         {
           "label": "SRM",
-          "value": "3–7"
+          "value": "3 - 7"
         }
       ],
       "tags": [
@@ -4301,23 +4301,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.050–1.058"
+          "value": "1.050 - 1.058"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.015"
+          "value": "1.008 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "5.0–6.0%"
+          "value": "5.0 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "4–6"
+          "value": "4 - 6"
         }
       ],
       "tags": [
@@ -4382,23 +4382,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–28"
+          "value": "15 - 28"
         },
         {
           "label": "Original gravity",
-          "value": "1.026–1.034"
+          "value": "1.026 - 1.034"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.010"
+          "value": "1.006 - 1.010"
         },
         {
           "label": "ABV",
-          "value": "2.4–3.6%"
+          "value": "2.4 - 3.6%"
         },
         {
           "label": "SRM",
-          "value": "1.5–4"
+          "value": "1.5 - 4"
         }
       ],
       "tags": [
@@ -4464,23 +4464,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "22–40"
+          "value": "22 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.050"
+          "value": "1.044 - 1.050"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.013"
+          "value": "1.008 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "4.4–5.2%"
+          "value": "4.4 - 5.2%"
         },
         {
           "label": "SRM",
-          "value": "2–4"
+          "value": "2 - 4"
         }
       ],
       "tags": [
@@ -4546,23 +4546,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "5–12"
+          "value": "5 - 12"
         },
         {
           "label": "Original gravity",
-          "value": "1.036–1.056"
+          "value": "1.036 - 1.056"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.010"
+          "value": "1.006 - 1.010"
         },
         {
           "label": "ABV",
-          "value": "4.2–4.8%"
+          "value": "4.2 - 4.8%"
         },
         {
           "label": "SRM",
-          "value": "3–4"
+          "value": "3 - 4"
         }
       ],
       "tags": [
@@ -4631,23 +4631,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–30"
+          "value": "10 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.059–1.075"
+          "value": "1.059 - 1.075"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.013"
+          "value": "1.004 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "6.0–8.5%"
+          "value": "6.0 - 8.5%"
         },
         {
           "label": "SRM",
-          "value": "4–8"
+          "value": "4 - 8"
         }
       ],
       "tags": [
@@ -4706,23 +4706,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "0–10"
+          "value": "0 - 10"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.054"
+          "value": "1.040 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.000–1.006"
+          "value": "1.000 - 1.006"
         },
         {
           "label": "ABV",
-          "value": "5.0–8.0%"
+          "value": "5.0 - 8.0%"
         },
         {
           "label": "SRM",
-          "value": "5–6"
+          "value": "5 - 6"
         }
       ],
       "tags": [
@@ -4787,23 +4787,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–60"
+          "value": "25 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.060–1.085"
+          "value": "1.060 - 1.085"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.015"
+          "value": "1.010 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "6.0–9.0%"
+          "value": "6.0 - 9.0%"
         },
         {
           "label": "SRM",
-          "value": "3–7"
+          "value": "3 - 7"
         }
       ],
       "tags": [
@@ -4868,23 +4868,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "23–35"
+          "value": "23 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.064–1.072"
+          "value": "1.064 - 1.072"
         },
         {
           "label": "Final gravity",
-          "value": "1.011–1.018"
+          "value": "1.011 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "6.3–7.4%"
+          "value": "6.3 - 7.4%"
         },
         {
           "label": "SRM",
-          "value": "6–9"
+          "value": "6 - 9"
         }
       ],
       "tags": [
@@ -5010,23 +5010,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–30"
+          "value": "15 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.055"
+          "value": "1.044 - 1.055"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.018"
+          "value": "1.010 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "4.0–5.5%"
+          "value": "4.0 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "11–20"
+          "value": "11 - 20"
         }
       ],
       "tags": [
@@ -5089,23 +5089,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "5–12"
+          "value": "5 - 12"
         },
         {
           "label": "Original gravity",
-          "value": "1.032–1.040"
+          "value": "1.032 - 1.040"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.008"
+          "value": "1.004 - 1.008"
         },
         {
           "label": "ABV",
-          "value": "3.5–4.7%"
+          "value": "3.5 - 4.7%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -5170,23 +5170,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–20"
+          "value": "15 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.033–1.038"
+          "value": "1.033 - 1.038"
         },
         {
           "label": "Final gravity",
-          "value": "1.012–1.015"
+          "value": "1.012 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "2.8–3.6%"
+          "value": "2.8 - 3.6%"
         },
         {
           "label": "SRM",
-          "value": "22–35"
+          "value": "22 - 35"
         }
       ],
       "tags": [
@@ -5251,23 +5251,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.028–1.032"
+          "value": "1.028 - 1.032"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.012"
+          "value": "1.006 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "2.5–3.3%"
+          "value": "2.5 - 3.3%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -5332,23 +5332,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–40"
+          "value": "25 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.060"
+          "value": "1.044 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.015"
+          "value": "1.010 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.0%"
+          "value": "4.5 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -5414,23 +5414,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.046–1.060"
+          "value": "1.046 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.016"
+          "value": "1.010 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.0%"
+          "value": "4.5 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "20–30"
+          "value": "20 - 30"
         }
       ],
       "tags": [
@@ -5494,23 +5494,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–20"
+          "value": "10 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.046–1.056"
+          "value": "1.046 - 1.056"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.014"
+          "value": "1.010 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.0%"
+          "value": "4.5 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "14–19"
+          "value": "14 - 19"
         }
       ],
       "tags": [
@@ -5573,23 +5573,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "0–15"
+          "value": "0 - 15"
         },
         {
           "label": "Original gravity",
-          "value": "1.076–1.120"
+          "value": "1.076 - 1.120"
         },
         {
           "label": "Final gravity",
-          "value": "1.016–1.038"
+          "value": "1.016 - 1.038"
         },
         {
           "label": "ABV",
-          "value": "7.0–11.0%"
+          "value": "7.0 - 11.0%"
         },
         {
           "label": "SRM",
-          "value": "4–22"
+          "value": "4 - 22"
         }
       ],
       "tags": [
@@ -5652,23 +5652,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "50–90"
+          "value": "50 - 90"
         },
         {
           "label": "Original gravity",
-          "value": "1.075–1.115"
+          "value": "1.075 - 1.115"
         },
         {
           "label": "Final gravity",
-          "value": "1.018–1.030"
+          "value": "1.018 - 1.030"
         },
         {
           "label": "ABV",
-          "value": "8.0–12.0%"
+          "value": "8.0 - 12.0%"
         },
         {
           "label": "SRM",
-          "value": "30–40"
+          "value": "30 - 40"
         }
       ],
       "tags": [
@@ -5736,23 +5736,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–25"
+          "value": "8 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.042–1.055"
+          "value": "1.042 - 1.055"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.0%"
+          "value": "4.5 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "6–14"
+          "value": "6 - 14"
         }
       ],
       "tags": [
@@ -5816,23 +5816,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–20"
+          "value": "8 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.056"
+          "value": "1.044 - 1.056"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.012"
+          "value": "1.008 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.2–6.0%"
+          "value": "4.2 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "14–30"
+          "value": "14 - 30"
         }
       ],
       "tags": [
@@ -5900,23 +5900,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–25"
+          "value": "18 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.042–1.050"
+          "value": "1.042 - 1.050"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.012"
+          "value": "1.008 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.5–6.0%"
+          "value": "4.5 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "2–6"
+          "value": "2 - 6"
         }
       ],
       "tags": [
@@ -5980,23 +5980,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "35–50"
+          "value": "35 - 50"
         },
         {
           "label": "Original gravity",
-          "value": "1.052–1.062"
+          "value": "1.052 - 1.062"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.014"
+          "value": "1.010 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "5.0–6.5%"
+          "value": "5.0 - 6.5%"
         },
         {
           "label": "SRM",
-          "value": "30–40"
+          "value": "30 - 40"
         }
       ],
       "tags": [
@@ -6061,23 +6061,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–28"
+          "value": "18 - 28"
         },
         {
           "label": "Original gravity",
-          "value": "1.036–1.046"
+          "value": "1.036 - 1.046"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.014"
+          "value": "1.010 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "3.8–5.0%"
+          "value": "3.8 - 5.0%"
         },
         {
           "label": "SRM",
-          "value": "9–14"
+          "value": "9 - 14"
         }
       ],
       "tags": [
@@ -6141,23 +6141,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–45"
+          "value": "25 - 45"
         },
         {
           "label": "Original gravity",
-          "value": "1.036–1.044"
+          "value": "1.036 - 1.044"
         },
         {
           "label": "Final gravity",
-          "value": "1.007–1.011"
+          "value": "1.007 - 1.011"
         },
         {
           "label": "ABV",
-          "value": "3.8–5.0%"
+          "value": "3.8 - 5.0%"
         },
         {
           "label": "SRM",
-          "value": "25–40"
+          "value": "25 - 40"
         }
       ],
       "tags": [
@@ -6222,23 +6222,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–30"
+          "value": "18 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.050"
+          "value": "1.044 - 1.050"
         },
         {
           "label": "Final gravity",
-          "value": "1.007–1.011"
+          "value": "1.007 - 1.011"
         },
         {
           "label": "ABV",
-          "value": "4.4–5.2%"
+          "value": "4.4 - 5.2%"
         },
         {
           "label": "SRM",
-          "value": "3.5–5"
+          "value": "3.5 - 5"
         }
       ],
       "tags": [
@@ -6303,23 +6303,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "0–10"
+          "value": "0 - 10"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.054"
+          "value": "1.040 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.001–1.010"
+          "value": "1.001 - 1.010"
         },
         {
           "label": "ABV",
-          "value": "5.0–6.5%"
+          "value": "5.0 - 6.5%"
         },
         {
           "label": "SRM",
-          "value": "3–6"
+          "value": "3 - 6"
         }
       ],
       "tags": [
@@ -6383,23 +6383,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–24"
+          "value": "18 - 24"
         },
         {
           "label": "Original gravity",
-          "value": "1.054–1.060"
+          "value": "1.054 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.014"
+          "value": "1.010 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "5.6–6.3%"
+          "value": "5.6 - 6.3%"
         },
         {
           "label": "SRM",
-          "value": "8–17"
+          "value": "8 - 17"
         }
       ],
       "tags": [
@@ -6570,23 +6570,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–28"
+          "value": "18 - 28"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.056"
+          "value": "1.048 - 1.056"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.016"
+          "value": "1.010 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "4.5–5.6%"
+          "value": "4.5 - 5.6%"
         },
         {
           "label": "SRM",
-          "value": "17–28"
+          "value": "17 - 28"
         }
       ],
       "tags": [
@@ -6651,23 +6651,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "16–22"
+          "value": "16 - 22"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.048"
+          "value": "1.044 - 1.048"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.012"
+          "value": "1.006 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.7–5.4%"
+          "value": "4.7 - 5.4%"
         },
         {
           "label": "SRM",
-          "value": "3–5"
+          "value": "3 - 5"
         }
       ],
       "tags": [
@@ -6732,23 +6732,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–40"
+          "value": "25 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.045–1.065"
+          "value": "1.045 - 1.065"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.018"
+          "value": "1.010 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "4.2–5.9%"
+          "value": "4.2 - 5.9%"
         },
         {
           "label": "SRM",
-          "value": "22–40"
+          "value": "22 - 40"
         }
       ],
       "tags": [
@@ -6813,23 +6813,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–60"
+          "value": "30 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.055–1.088"
+          "value": "1.055 - 1.088"
         },
         {
           "label": "Final gravity",
-          "value": "1.015–1.022"
+          "value": "1.015 - 1.022"
         },
         {
           "label": "ABV",
-          "value": "5.5–9.0%"
+          "value": "5.5 - 9.0%"
         },
         {
           "label": "SRM",
-          "value": "10–22"
+          "value": "10 - 22"
         }
       ],
       "tags": [
@@ -6894,23 +6894,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–35"
+          "value": "25 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.030–1.039"
+          "value": "1.030 - 1.039"
         },
         {
           "label": "Final gravity",
-          "value": "1.007–1.011"
+          "value": "1.007 - 1.011"
         },
         {
           "label": "ABV",
-          "value": "3.2–3.8%"
+          "value": "3.2 - 3.8%"
         },
         {
           "label": "SRM",
-          "value": "8–14"
+          "value": "8 - 14"
         }
       ],
       "tags": [
@@ -6974,23 +6974,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–25"
+          "value": "20 - 25"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.074"
+          "value": "1.040 - 1.074"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.012"
+          "value": "1.008 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.0–8.0%"
+          "value": "4.0 - 8.0%"
         },
         {
           "label": "SRM",
-          "value": "17–22"
+          "value": "17 - 22"
         }
       ],
       "tags": [
@@ -7054,23 +7054,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.050–1.057"
+          "value": "1.050 - 1.057"
         },
         {
           "label": "Final gravity",
-          "value": "1.012–1.016"
+          "value": "1.012 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "4.8–6%"
+          "value": "4.8 - 6%"
         },
         {
           "label": "SRM",
-          "value": "12–22"
+          "value": "12 - 22"
         }
       ],
       "tags": [
@@ -7140,23 +7140,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.065"
+          "value": "1.048 - 1.065"
         },
         {
           "label": "Final gravity",
-          "value": "1.002–1.008"
+          "value": "1.002 - 1.008"
         },
         {
           "label": "ABV",
-          "value": "3.5–9.5%"
+          "value": "3.5 - 9.5%"
         },
         {
           "label": "SRM",
-          "value": "5–22"
+          "value": "5 - 22"
         }
       ],
       "tags": [
@@ -7219,23 +7219,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–35"
+          "value": "20 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.046–1.052"
+          "value": "1.046 - 1.052"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.016"
+          "value": "1.010 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "4.4–5.4%"
+          "value": "4.4 - 5.4%"
         },
         {
           "label": "SRM",
-          "value": "19–30"
+          "value": "19 - 30"
         }
       ],
       "tags": [
@@ -7300,23 +7300,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–30"
+          "value": "15 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.040–1.060"
+          "value": "1.040 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.016"
+          "value": "1.010 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "3.9–6.0%"
+          "value": "3.9 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "12–20"
+          "value": "12 - 20"
         }
       ],
       "tags": [
@@ -7380,23 +7380,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–20"
+          "value": "10 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.035–1.040"
+          "value": "1.035 - 1.040"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.015"
+          "value": "1.010 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "3.3–3.9%"
+          "value": "3.3 - 3.9%"
         },
         {
           "label": "SRM",
-          "value": "12–20"
+          "value": "12 - 20"
         }
       ],
       "tags": [
@@ -7460,23 +7460,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "10–20"
+          "value": "10 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.030–1.035"
+          "value": "1.030 - 1.035"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.013"
+          "value": "1.010 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "2.5–3.3%"
+          "value": "2.5 - 3.3%"
         },
         {
           "label": "SRM",
-          "value": "17–25"
+          "value": "17 - 25"
         }
       ],
       "tags": [
@@ -7590,23 +7590,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–30"
+          "value": "20 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.046–1.057"
+          "value": "1.046 - 1.057"
         },
         {
           "label": "Final gravity",
-          "value": "0.990–1.004"
+          "value": "0.990 - 1.004"
         },
         {
           "label": "ABV",
-          "value": "6.0–7.5%"
+          "value": "6.0 - 7.5%"
         },
         {
           "label": "SRM",
-          "value": "2–4"
+          "value": "2 - 4"
         }
       ],
       "tags": [
@@ -7868,23 +7868,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "3–8"
+          "value": "3 - 8"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.065"
+          "value": "1.048 - 1.065"
         },
         {
           "label": "Final gravity",
-          "value": "1.006–1.013"
+          "value": "1.006 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "4.5–7.0%"
+          "value": "4.5 - 7.0%"
         },
         {
           "label": "SRM",
-          "value": "2–3"
+          "value": "2 - 3"
         }
       ],
       "tags": [
@@ -7944,23 +7944,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–50"
+          "value": "30 - 50"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.060"
+          "value": "1.048 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.016"
+          "value": "1.010 - 1.016"
         },
         {
           "label": "ABV",
-          "value": "4.6–6.2%"
+          "value": "4.6 - 6.2%"
         },
         {
           "label": "SRM",
-          "value": "8–18"
+          "value": "8 - 18"
         }
       ],
       "tags": [
@@ -8024,23 +8024,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "20–40"
+          "value": "20 - 40"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.060"
+          "value": "1.044 - 1.060"
         },
         {
           "label": "Final gravity",
-          "value": "1.012–1.024"
+          "value": "1.012 - 1.024"
         },
         {
           "label": "ABV",
-          "value": "4.0–6.0%"
+          "value": "4.0 - 6.0%"
         },
         {
           "label": "SRM",
-          "value": "30–40"
+          "value": "30 - 40"
         }
       ],
       "tags": [
@@ -8106,23 +8106,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–50"
+          "value": "30 - 50"
         },
         {
           "label": "Original gravity",
-          "value": "1.056–1.075"
+          "value": "1.056 - 1.075"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.018"
+          "value": "1.010 - 1.018"
         },
         {
           "label": "ABV",
-          "value": "5.5–8.0%"
+          "value": "5.5 - 8.0%"
         },
         {
           "label": "SRM",
-          "value": "30–40"
+          "value": "30 - 40"
         }
       ],
       "tags": [
@@ -8188,23 +8188,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "18–30"
+          "value": "18 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.048–1.055"
+          "value": "1.048 - 1.055"
         },
         {
           "label": "Final gravity",
-          "value": "1.010–1.014"
+          "value": "1.010 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.7–5.5%"
+          "value": "4.7 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "9–15"
+          "value": "9 - 15"
         }
       ],
       "tags": [
@@ -8269,23 +8269,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "17–35"
+          "value": "17 - 35"
         },
         {
           "label": "Original gravity",
-          "value": "1.070–1.130"
+          "value": "1.070 - 1.130"
         },
         {
           "label": "Final gravity",
-          "value": "1.018–1.040"
+          "value": "1.018 - 1.040"
         },
         {
           "label": "ABV",
-          "value": "6.5–10.0%"
+          "value": "6.5 - 10.0%"
         },
         {
           "label": "SRM",
-          "value": "14–25"
+          "value": "14 - 25"
         }
       ],
       "tags": [
@@ -8353,23 +8353,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–15"
+          "value": "8 - 15"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.053"
+          "value": "1.044 - 1.053"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.014"
+          "value": "1.008 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.3–5.6%"
+          "value": "4.3 - 5.6%"
         },
         {
           "label": "SRM",
-          "value": "2–6"
+          "value": "2 - 6"
         }
       ],
       "tags": [
@@ -8437,23 +8437,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–30"
+          "value": "15 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.064–1.090"
+          "value": "1.064 - 1.090"
         },
         {
           "label": "Final gravity",
-          "value": "1.015–1.022"
+          "value": "1.015 - 1.022"
         },
         {
           "label": "ABV",
-          "value": "6.5–9.0%"
+          "value": "6.5 - 9.0%"
         },
         {
           "label": "SRM",
-          "value": "6–25"
+          "value": "6 - 25"
         }
       ],
       "tags": [
@@ -8518,23 +8518,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "30–60"
+          "value": "30 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.080–1.120"
+          "value": "1.080 - 1.120"
         },
         {
           "label": "Final gravity",
-          "value": "1.016–1.030"
+          "value": "1.016 - 1.030"
         },
         {
           "label": "ABV",
-          "value": "8.0–12.0%"
+          "value": "8.0 - 12.0%"
         },
         {
           "label": "SRM",
-          "value": "6–14"
+          "value": "6 - 14"
         }
       ],
       "tags": [
@@ -8716,23 +8716,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "8–20"
+          "value": "8 - 20"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.052"
+          "value": "1.044 - 1.052"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.012"
+          "value": "1.008 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.5–5.5%"
+          "value": "4.5 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "2–4"
+          "value": "2 - 4"
         }
       ],
       "tags": [
@@ -8842,23 +8842,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–22"
+          "value": "15 - 22"
         },
         {
           "label": "Original gravity",
-          "value": "1.042–1.054"
+          "value": "1.042 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.009–1.013"
+          "value": "1.009 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "4.3–5.5%"
+          "value": "4.3 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "3–5"
+          "value": "3 - 5"
         }
       ],
       "tags": [
@@ -8908,23 +8908,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "15–22"
+          "value": "15 - 22"
         },
         {
           "label": "Original gravity",
-          "value": "1.042–1.054"
+          "value": "1.042 - 1.054"
         },
         {
           "label": "Final gravity",
-          "value": "1.009–1.013"
+          "value": "1.009 - 1.013"
         },
         {
           "label": "ABV",
-          "value": "4.3–5.5%"
+          "value": "4.3 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "3–5"
+          "value": "3 - 5"
         }
       ],
       "tags": [
@@ -8978,23 +8978,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "35–60"
+          "value": "35 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.055–1.065"
+          "value": "1.055 - 1.065"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.015"
+          "value": "1.008 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "5.0–6.5%"
+          "value": "5.0 - 6.5%"
         },
         {
           "label": "SRM",
-          "value": "6–15"
+          "value": "6 - 15"
         }
       ],
       "tags": [
@@ -9048,23 +9048,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "35–60"
+          "value": "35 - 60"
         },
         {
           "label": "Original gravity",
-          "value": "1.055–1.065"
+          "value": "1.055 - 1.065"
         },
         {
           "label": "Final gravity",
-          "value": "1.008–1.015"
+          "value": "1.008 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "5.0–6.5%"
+          "value": "5.0 - 6.5%"
         },
         {
           "label": "SRM",
-          "value": "6–15"
+          "value": "6 - 15"
         }
       ],
       "tags": [
@@ -9122,23 +9122,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "6–30"
+          "value": "6 - 30"
         },
         {
           "label": "Original gravity",
-          "value": "1.045–1.100"
+          "value": "1.045 - 1.100"
         },
         {
           "label": "Final gravity",
-          "value": "1.005–1.015"
+          "value": "1.005 - 1.015"
         },
         {
           "label": "ABV",
-          "value": "4.5–12%"
+          "value": "4.5 - 12%"
         },
         {
           "label": "SRM",
-          "value": "4–25"
+          "value": "4 - 25"
         }
       ],
       "tags": [
@@ -9197,23 +9197,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "2–8"
+          "value": "2 - 8"
         },
         {
           "label": "Original gravity",
-          "value": "1.039–1.048"
+          "value": "1.039 - 1.048"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.012"
+          "value": "1.004 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.0–5.5%"
+          "value": "4.0 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "2–6"
+          "value": "2 - 6"
         }
       ],
       "tags": [
@@ -9275,23 +9275,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "2–8"
+          "value": "2 - 8"
         },
         {
           "label": "Original gravity",
-          "value": "1.039–1.048"
+          "value": "1.039 - 1.048"
         },
         {
           "label": "Final gravity",
-          "value": "1.004–1.012"
+          "value": "1.004 - 1.012"
         },
         {
           "label": "ABV",
-          "value": "4.0–5.5%"
+          "value": "4.0 - 5.5%"
         },
         {
           "label": "SRM",
-          "value": "2–6"
+          "value": "2 - 6"
         }
       ],
       "tags": [
@@ -9353,23 +9353,23 @@
       "metrics": [
         {
           "label": "IBU",
-          "value": "25–45"
+          "value": "25 - 45"
         },
         {
           "label": "Original gravity",
-          "value": "1.044–1.056"
+          "value": "1.044 - 1.056"
         },
         {
           "label": "Final gravity",
-          "value": "1.009–1.014"
+          "value": "1.009 - 1.014"
         },
         {
           "label": "ABV",
-          "value": "4.5–5.8%"
+          "value": "4.5 - 5.8%"
         },
         {
           "label": "SRM",
-          "value": "2–6"
+          "value": "2 - 6"
         }
       ],
       "tags": [

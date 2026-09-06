@@ -2,10 +2,10 @@ import XCTest
 @testable import BeerJudgeReference
 
 final class GuidelineDecodingTests: XCTestCase {
-    func testBundledManifestDeclaresBothProviders() throws {
+    func testBundledManifestDeclaresAllProviders() throws {
         let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "guidelines-manifest", withExtension: "json"))
         let manifest = try JSONDecoder().decode(GuidelineManifest.self, from: Data(contentsOf: url))
-        XCTAssertEqual(Set(manifest.datasets.map(\.providerID)), Set(["bjcp", "ba"]))
+        XCTAssertEqual(Set(manifest.datasets.map(\.providerID)), Set(["bjcp", "aabc", "ba"]))
     }
 
     func testBundledDatasetsHaveUniqueStylesAndUsefulContent() throws {
@@ -38,6 +38,36 @@ final class GuidelineDecodingTests: XCTestCase {
             categories.map(\.number),
             ["Ale Styles", "Lager Styles", "Hybrid/Mixed Lagers or Ale"]
         )
+    }
+
+    func testAABCBrowseOrderPreservesJudgingOrder() throws {
+        let dataset = try bundledDataset(named: "aabc-2025")
+        let categories = GuidelineOrdering.categories(from: dataset.styles)
+
+        XCTAssertEqual(dataset.styles.count, 152)
+        XCTAssertEqual(categories.count, 20)
+        XCTAssertEqual(categories.first?.number, "1")
+        XCTAssertEqual(
+            Array(categories.first?.styles.prefix(4).map(\.name) ?? []),
+            ["Berliner Weisse", "Scottish Light", "Scottish Heavy", "American Light Lager"]
+        )
+        XCTAssertEqual(categories[5].name, "IPA")
+        XCTAssertEqual(
+            Array(categories[6].styles.prefix(3).map(\.name)),
+            ["Hazy IPA", "Specialty IPA: White IPA", "Specialty IPA: Brut IPA"]
+        )
+        let whiteIPA = try XCTUnwrap(dataset.styles.first { $0.name == "Specialty IPA: White IPA" })
+        XCTAssertTrue(whiteIPA.sections.contains { $0.title == "Specialty IPA guidance - Entry instructions" })
+    }
+
+    func testAABCRetainsMeadAndCiderSections() throws {
+        let dataset = try bundledDataset(named: "aabc-2025")
+        let dryMead = try XCTUnwrap(dataset.styles.first { $0.id == "aabc-19-m1a-dry-mead" })
+        let commonCider = try XCTUnwrap(dataset.styles.first { $0.id == "aabc-20-c1a-common-cider" })
+
+        XCTAssertTrue(dryMead.sections.contains { $0.title == "Ingredients" })
+        XCTAssertTrue(commonCider.sections.contains { $0.title == "Aroma and flavor" })
+        XCTAssertTrue(commonCider.sections.contains { $0.title == "Varieties" })
     }
 
     private func bundledDataset(named resource: String) throws -> GuidelineDataset {

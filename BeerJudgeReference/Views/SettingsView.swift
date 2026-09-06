@@ -111,7 +111,7 @@ struct SettingsView: View {
                 Section("Source and attribution") {
                     Text(descriptor.attribution).font(.footnote)
                     Link("Open official source", destination: descriptor.sourceURL)
-                    Text("This independent reference is not affiliated with or endorsed by BJCP or the Brewers Association. Guideline text remains the property of its respective owner.")
+                    Text("This independent reference is not affiliated with or endorsed by AABC, BJCP or the Brewers Association. Guideline text remains the property of its respective owner.")
                         .font(.caption).foregroundStyle(.secondary)
                 }
                 .listRowBackground(theme.surface)
