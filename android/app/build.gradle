@@ -4,9 +4,9 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.compose'
 }
 
-android { namespace 'com.brewvault.bjr'; compileSdk 36
+android { namespace 'com.brewvault.beerjudge'; compileSdk 36
     defaultConfig {
-        applicationId 'com.brewvault.bjr'
+        applicationId 'com.brewvault.beerjudge'
         minSdk 26
         targetSdk 36
         versionCode project.hasProperty('versionCode') ? Integer.parseInt(project.property('versionCode').toString()) : 1

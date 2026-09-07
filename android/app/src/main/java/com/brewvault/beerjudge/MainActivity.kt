@@ -1,4 +1,4 @@
-package com.brewvault.bjr
+package com.brewvault.beerjudge
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
