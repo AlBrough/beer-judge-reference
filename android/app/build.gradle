@@ -9,8 +9,8 @@ android { namespace 'com.brewvault.bjr'; compileSdk 36
         applicationId 'com.brewvault.bjr'
         minSdk 26
         targetSdk 36
-        versionCode (project.findProperty('versionCode') ?: '1').toString().toInteger()
-        versionName (project.findProperty('versionName') ?: '1.0.0').toString()
+        versionCode project.hasProperty('versionCode') ? Integer.parseInt(project.property('versionCode').toString()) : 1
+        versionName project.hasProperty('versionName') ? project.property('versionName').toString() : '1.0.0'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_21; targetCompatibility JavaVersion.VERSION_21 }
     signingConfigs {
