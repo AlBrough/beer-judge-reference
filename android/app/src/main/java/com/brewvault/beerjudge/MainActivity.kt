@@ -44,6 +44,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextOverflow
 import org.json.JSONObject
 
 data class BeerStyle(val id: String, val number: String, val name: String, val category: String, val categoryNumber: String, val metrics: List<Pair<String, String>>, val sections: List<Pair<String, String>>)
@@ -177,7 +178,7 @@ private fun SettingsScreen(selected: Pair<String, String>, editions: List<Pair<S
     var appearanceOpen by remember { mutableStateOf(false) }
     var colourOpen by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-        TopAppBar(title = { Text("Settings") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } })
+        TopAppBar(title = { Text("Settings") }, actions = { Button(onClick = onBack, modifier = Modifier.padding(end = 8.dp)) { Text("Back") } })
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("Guideline", style = MaterialTheme.typography.titleMedium)
             Box { Button(onClick = { guidelineOpen = true }) { Text(selected.first) }; DropdownMenu(guidelineOpen, { guidelineOpen = false }) { editions.forEach { edition -> DropdownMenuItem(text = { Text(edition.first) }, onClick = { onGuideline(edition); guidelineOpen = false }) } } }
@@ -239,7 +240,7 @@ private fun StyleChoice(label: String, selected: BeerStyle?, styles: List<BeerSt
 @androidx.compose.runtime.Composable
 private fun CategoryDetail(category: StyleCategory, onBack: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-        TopAppBar(title = { Text(if (category.number.isBlank()) categoryDisplay(category.name) else "${category.number} ${categoryDisplay(category.name)}") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } })
+        TopAppBar(title = { Text(if (category.number.isBlank()) categoryDisplay(category.name) else "${category.number} ${categoryDisplay(category.name)}", maxLines = 2, overflow = TextOverflow.Ellipsis) }, actions = { Button(onClick = onBack, modifier = Modifier.padding(end = 8.dp)) { Text("Back") } })
         LazyColumn(Modifier.padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(category.styles, key = { it.id }) { style ->
                 Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); if (style.metrics.isNotEmpty()) Text(style.metrics.take(2).joinToString("  •  ") { "${it.first}: ${it.second}" }, style = MaterialTheme.typography.bodySmall) } }
@@ -251,7 +252,7 @@ private fun CategoryDetail(category: StyleCategory, onBack: () -> Unit, onOpen: 
 @androidx.compose.runtime.Composable
 private fun StyleDetail(style: BeerStyle, favourite: Boolean = false, onFavourite: () -> Unit = {}, onBack: () -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.headlineSmall); Row { TextButton(onClick = onFavourite) { Text(if (favourite) "★" else "☆") }; Button(onClick = onBack) { Text("Back") } } }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text("${style.number} ${display(style.name)}", modifier = Modifier.weight(1f).padding(end = 8.dp), style = MaterialTheme.typography.headlineSmall, maxLines = 2, overflow = TextOverflow.Ellipsis); Row { TextButton(onClick = onFavourite) { Text(if (favourite) "★" else "☆") }; Button(onClick = onBack) { Text("Back") } } }
         Text(display(style.category), style = MaterialTheme.typography.titleMedium)
         style.metrics.forEach { (label, value) -> Text("$label: $value") }
         LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) { items(style.sections) { (title, body) -> Column { Text(title, style = MaterialTheme.typography.titleMedium); Text(body) } } }
