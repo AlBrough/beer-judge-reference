@@ -20,6 +20,10 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -49,6 +53,14 @@ private fun sortedStyles(styles: List<BeerStyle>): List<BeerStyle> = styles.sort
         .thenBy { naturalStyleKey(it.number) }
         .thenBy { it.name.lowercase() }
 )
+
+private data class StyleCategory(val number: String, val name: String, val styles: List<BeerStyle>)
+
+private fun groupedStyles(styles: List<BeerStyle>): List<StyleCategory> = sortedStyles(styles)
+    .groupBy { "${it.categoryNumber}|${it.category}" }
+    .values
+    .map { group -> StyleCategory(group.first().categoryNumber, group.first().category, sortedStyles(group)) }
+    .sortedWith(compareBy<StyleCategory> { it.number.toIntOrNull() ?: Int.MAX_VALUE }.thenBy { it.name.lowercase() })
 
 private fun display(value: String): String = value
     .replace(Regex("\\bipa\\b", RegexOption.IGNORE_CASE), "IPA")
@@ -100,24 +112,20 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
     MaterialTheme(colorScheme = if (dark) JudgeDarkColors else JudgeLightColors) {
         Surface(Modifier.fillMaxSize()) {
             if (opened != null) StyleDetail(opened!!) { opened = null } else {
-                var menuOpen by remember { mutableStateOf(false) }
-                var themeOpen by remember { mutableStateOf(false) }
+                var settingsOpen by remember { mutableStateOf(false) }
                 Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
                     TopAppBar(title = { Text("Beer Judge Reference") }, actions = {
                         Box {
-                            TextButton(onClick = { themeOpen = true }) { Text("Theme") }
-                            DropdownMenu(expanded = themeOpen, onDismissRequest = { themeOpen = false }) {
-                                Appearance.values().forEach { option -> DropdownMenuItem(text = { Text(option.label) }, onClick = { appearance = option.name; themeOpen = false }) }
+                            IconButton(onClick = { settingsOpen = true }) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
+                            DropdownMenu(expanded = settingsOpen, onDismissRequest = { settingsOpen = false }) {
+                                DropdownMenuItem(text = { Text("Guideline") }, onClick = { settingsOpen = false })
+                                editions.forEach { edition -> DropdownMenuItem(text = { Text(if (selected == edition) "✓ ${edition.first}" else edition.first) }, onClick = { selected = edition; styles = readStyles(activity, edition.second); settingsOpen = false; query = "" }) }
+                                DropdownMenuItem(text = { Text("Appearance") }, onClick = { settingsOpen = false })
+                                Appearance.values().forEach { option -> DropdownMenuItem(text = { Text(if (selectedAppearance == option) "✓ ${option.label}" else option.label) }, onClick = { appearance = option.name; settingsOpen = false }) }
                             }
                         }
                     })
                     Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Box {
-                            Button(onClick = { menuOpen = true }) { Text(selected.first) }
-                            DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false }) {
-                                editions.forEach { edition -> DropdownMenuItem(text = { Text(edition.first) }, onClick = { selected = edition; styles = readStyles(activity, edition.second); menuOpen = false; query = "" }) }
-                            }
-                        }
                         if (selected.first.startsWith("AABC")) {
                             var kindOpen by remember { mutableStateOf(false) }
                             Box {
@@ -129,12 +137,18 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                         }
                         OutlinedTextField(value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Search styles") }, singleLine = true)
                         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            items(filtered, key = { it.id }) { style ->
-                                Card(onClick = { opened = style }, modifier = Modifier.fillMaxWidth()) {
-                                    Column(Modifier.padding(14.dp)) {
-                                        Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium)
-                                        Text(display(style.category), style = MaterialTheme.typography.bodyMedium)
-                                        if (style.metrics.isNotEmpty()) Text(style.metrics.take(2).joinToString("  •  ") { "${it.first}: ${it.second}" }, style = MaterialTheme.typography.bodySmall)
+                            items(groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
+                                Card(modifier = Modifier.fillMaxWidth()) {
+                                    Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        Text(if (category.number.isBlank()) display(category.name) else "${category.number} ${display(category.name)}", style = MaterialTheme.typography.titleMedium)
+                                        category.styles.forEach { style ->
+                                            Card(onClick = { opened = style }, modifier = Modifier.fillMaxWidth()) {
+                                                Column(Modifier.padding(12.dp)) {
+                                                    Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium)
+                                                    if (style.metrics.isNotEmpty()) Text(style.metrics.take(2).joinToString("  •  ") { "${it.first}: ${it.second}" }, style = MaterialTheme.typography.bodySmall)
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
