@@ -39,7 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.json.JSONObject
 
-data class BeerStyle(val id: String, val number: String, val name: String, val category: String, val metrics: List<Pair<String, String>>, val sections: List<Pair<String, String>>)
+data class BeerStyle(val id: String, val number: String, val name: String, val category: String, val categoryNumber: String, val metrics: List<Pair<String, String>>, val sections: List<Pair<String, String>>)
 
 private fun naturalStyleKey(value: String): String = value.lowercase().replace(Regex("\\d+")) { it.value.padStart(4, '0') }
 
@@ -65,7 +65,7 @@ private fun readStyles(activity: ComponentActivity, file: String): List<BeerStyl
         val sections = item.optJSONArray("sections")?.let { array -> (0 until array.length()).map { i ->
             val section = array.getJSONObject(i); section.optString("title") to section.optString("body")
         } } ?: emptyList()
-        BeerStyle(item.optString("id"), item.optString("number"), item.optString("name"), item.optString("category"), metrics, sections)
+        BeerStyle(item.optString("id"), item.optString("number"), item.optString("name"), item.optString("category"), item.optString("categoryNumber"), metrics, sections)
     }
 }
 
