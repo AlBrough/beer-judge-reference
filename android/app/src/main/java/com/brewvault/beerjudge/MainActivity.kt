@@ -67,6 +67,12 @@ private fun display(value: String): String = value
     .replace(Regex("\\bipa\\b", RegexOption.IGNORE_CASE), "IPA")
     .replace(Regex("\\s*[â€“â€”-]\\s*"), " - ")
 
+private fun categoryDisplay(value: String): String = when {
+    value.equals("MEAD", true) -> "Mead"
+    value.equals("CIDER", true) -> "Cider"
+    else -> display(value)
+}
+
 private fun readStyles(activity: ComponentActivity, file: String): List<BeerStyle> {
     val root = JSONObject(activity.assets.open(file).bufferedReader().use { it.readText() })
     val styles = root.optJSONArray("styles") ?: return emptyList()
@@ -151,7 +157,7 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             items(groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
                                 Card(onClick = { openedCategory = category }, modifier = Modifier.fillMaxWidth()) {
-                                    Text(if (category.number.isBlank()) display(category.name) else "${category.number} ${display(category.name)}", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
+                                    Text(if (category.number.isBlank()) categoryDisplay(category.name) else "${category.number} ${categoryDisplay(category.name)}", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
                                 }
                             }
                         }
@@ -186,7 +192,7 @@ private fun SettingsScreen(selected: Pair<String, String>, editions: List<Pair<S
 @androidx.compose.runtime.Composable
 private fun CategoryDetail(category: StyleCategory, onBack: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-        TopAppBar(title = { Text(if (category.number.isBlank()) display(category.name) else "${category.number} ${display(category.name)}") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } })
+        TopAppBar(title = { Text(if (category.number.isBlank()) categoryDisplay(category.name) else "${category.number} ${categoryDisplay(category.name)}") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } })
         LazyColumn(Modifier.padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             items(category.styles, key = { it.id }) { style ->
                 Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); if (style.metrics.isNotEmpty()) Text(style.metrics.take(2).joinToString("  •  ") { "${it.first}: ${it.second}" }, style = MaterialTheme.typography.bodySmall) } }
