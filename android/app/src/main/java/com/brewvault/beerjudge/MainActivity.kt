@@ -144,7 +144,7 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                     Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                         OutlinedTextField(value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Search styles") }, singleLine = true)
                         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            items(groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
+                            items(if (selected.first.startsWith("AABC")) listOf(StyleCategory("", "AABC 2025", filtered)) else groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
                                 Card(onClick = { openedCategory = category }, modifier = Modifier.fillMaxWidth()) {
                                     Text(if (category.number.isBlank()) categoryDisplay(category.name) else "${category.number} ${categoryDisplay(category.name)}", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
                                 }
