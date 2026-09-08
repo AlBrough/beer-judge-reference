@@ -156,7 +156,7 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                             recentStyles.take(4).forEach { style -> TextButton(onClick = { opened = style }) { Text("${style.number} ${display(style.name)}") } }
                         }
                         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                            items(if (selected.first.startsWith("AABC")) listOf(StyleCategory("", "AABC 2025", filtered)) else groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
+                            items(groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
                                 Card(onClick = { openedCategory = category }, modifier = Modifier.fillMaxWidth()) {
                                     Text(if (category.number.isBlank()) categoryDisplay(category.name) else "${category.number} ${categoryDisplay(category.name)}", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
                                 }
@@ -195,7 +195,7 @@ private fun SettingsScreen(selected: Pair<String, String>, editions: List<Pair<S
 private fun SavedScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onCompare: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
         TopAppBar(title = { Text("Saved") })
-        if (styles.isEmpty()) Text("No saved styles", modifier = Modifier.padding(16.dp)) else LazyColumn(Modifier.weight(1f).padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) { items(styles, key = { it.id }) { style -> Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); Text(categoryDisplay(style.category), style = MaterialTheme.typography.bodySmall) } } } }
+        if (styles.isEmpty()) Column(Modifier.weight(1f).fillMaxWidth()) { Text("No saved styles", modifier = Modifier.padding(16.dp)) } else LazyColumn(Modifier.weight(1f).padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) { items(styles, key = { it.id }) { style -> Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); Text(categoryDisplay(style.category), style = MaterialTheme.typography.bodySmall) } } } }
         AppNavigationBar("Saved", onBrowse, onCompare, {})
     }
 }
@@ -215,6 +215,7 @@ private fun CompareScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onSaved
             val labels = (first!!.metrics + second!!.metrics).map { it.first }.distinct()
             labels.forEach { label -> Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text("$label: ${first!!.metrics.firstOrNull { it.first == label }?.second ?: "-"}", modifier = Modifier.weight(1f)); Text(second!!.metrics.firstOrNull { it.first == label }?.second ?: "-", modifier = Modifier.weight(1f)) } }
         }
+        Box(Modifier.weight(1f).fillMaxWidth()) {}
         AppNavigationBar("Compare", onBrowse, {}, onSaved)
     }
 }
