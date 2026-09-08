@@ -8,11 +8,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -45,6 +49,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.window.Dialog
 import org.json.JSONObject
 
 data class BeerStyle(val id: String, val number: String, val name: String, val category: String, val categoryNumber: String, val metrics: List<Pair<String, String>>, val sections: List<Pair<String, String>>)
@@ -122,12 +127,13 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
     var openedCategory by remember { mutableStateOf<StyleCategory?>(null) }
     var showSettings by remember { mutableStateOf(false) }
     var tab by rememberSaveable { mutableStateOf("Browse") }
-    var favourites by rememberSaveable { mutableStateOf(setOf<String>()) }
+    var favourites by rememberSaveable { mutableStateOf(activity.getPreferences(0).getStringSet("favourites", emptySet())?.toSet() ?: emptySet()) }
     var recents by rememberSaveable { mutableStateOf(listOf<String>()) }
     var appearance by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("appearance", Appearance.SYSTEM.name) ?: Appearance.SYSTEM.name) }
     var colourTheme by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("colourTheme", ColourTheme.FOREST.name) ?: ColourTheme.FOREST.name) }
     LaunchedEffect(appearance) { activity.getPreferences(0).edit().putString("appearance", appearance).apply() }
     LaunchedEffect(colourTheme) { activity.getPreferences(0).edit().putString("colourTheme", colourTheme).apply() }
+    LaunchedEffect(favourites) { activity.getPreferences(0).edit().putStringSet("favourites", favourites).apply() }
     val selectedAppearance = Appearance.values().firstOrNull { it.name == appearance } ?: Appearance.SYSTEM
     val dark = when (selectedAppearance) { Appearance.SYSTEM -> isSystemInDarkTheme(); Appearance.LIGHT -> false; Appearance.DARK -> true }
     val selectedColourTheme = ColourTheme.values().firstOrNull { it.name == colourTheme } ?: ColourTheme.FOREST
@@ -140,7 +146,7 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
             else if (opened != null) StyleDetail(opened!!, favourites.contains(opened!!.id), { favourites = if (favourites.contains(opened!!.id)) favourites - opened!!.id else favourites + opened!!.id }) { opened = null }
             else if (openedCategory != null) CategoryDetail(openedCategory!!, { openedCategory = null }) { opened = it; recents = (listOf(it.id) + recents).distinct().take(8) }
             else if (tab == "Saved") SavedScreen(styles.filter { favourites.contains(it.id) }, { tab = "Browse" }, { tab = "Compare" }) { opened = it; recents = (listOf(it.id) + recents).distinct().take(8) }
-            else if (tab == "Compare") CompareScreen(styles, { tab = "Browse" }, { tab = "Saved" }) { opened = it }
+            else if (tab == "Compare") CompareScreen(styles, { tab = "Browse" }, { tab = "Compare" }, { tab = "Saved" }) { opened = it; recents = (listOf(it.id) + recents).distinct().take(8) }
             else {
                 var settingsOpen by remember { mutableStateOf(false) }
                 Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
@@ -202,10 +208,11 @@ private fun SavedScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onCompare
 }
 
 @androidx.compose.runtime.Composable
-private fun CompareScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onSaved: () -> Unit, onOpen: (BeerStyle) -> Unit) {
+private fun CompareScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onCompare: () -> Unit, onSaved: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     var first by remember { mutableStateOf<BeerStyle?>(null) }
     var second by remember { mutableStateOf<BeerStyle?>(null) }
-    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+        Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text("Compare", style = MaterialTheme.typography.headlineSmall)
         Text("Choose two styles to compare their vital statistics and descriptions.")
         StyleChoice("First style", first, styles) { first = it }
@@ -215,9 +222,19 @@ private fun CompareScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onSaved
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text(first!!.name, modifier = Modifier.weight(1f)); Text(second!!.name, modifier = Modifier.weight(1f)) }
             val labels = (first!!.metrics + second!!.metrics).map { it.first }.distinct()
             labels.forEach { label -> Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text("$label: ${first!!.metrics.firstOrNull { it.first == label }?.second ?: "-"}", modifier = Modifier.weight(1f)); Text(second!!.metrics.firstOrNull { it.first == label }?.second ?: "-", modifier = Modifier.weight(1f)) } }
+            Spacer(Modifier.padding(top = 4.dp))
+            Text("Descriptors", style = MaterialTheme.typography.titleMedium)
+            val descriptorTitles = (first!!.sections + second!!.sections).map { it.first }.distinct()
+            descriptorTitles.forEach { title ->
+                Text(title, style = MaterialTheme.typography.labelLarge)
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    Text(first!!.sections.firstOrNull { it.first == title }?.second ?: "-", modifier = Modifier.weight(1f).padding(end = 8.dp))
+                    Text(second!!.sections.firstOrNull { it.first == title }?.second ?: "-", modifier = Modifier.weight(1f).padding(start = 8.dp))
+                }
+            }
         }
-        Box(Modifier.weight(1f).fillMaxWidth()) {}
-        AppNavigationBar("Compare", onBrowse, {}, onSaved)
+        }
+        AppNavigationBar("Compare", onBrowse, onCompare, onSaved)
     }
 }
 
@@ -233,7 +250,27 @@ private fun AppNavigationBar(selected: String, onBrowse: () -> Unit, onCompare: 
 @androidx.compose.runtime.Composable
 private fun StyleChoice(label: String, selected: BeerStyle?, styles: List<BeerStyle>, onSelect: (BeerStyle) -> Unit) {
     var open by remember { mutableStateOf(false) }
-    Box { Button(onClick = { open = true }) { Text(selected?.let { "$label: ${it.number} ${it.name}" } ?: "Choose $label") }; DropdownMenu(open, { open = false }) { styles.take(100).forEach { style -> DropdownMenuItem(text = { Text("${style.number} ${style.name}") }, onClick = { onSelect(style); open = false }) } } }
+    var query by remember { mutableStateOf("") }
+    Button(onClick = { open = true }, modifier = Modifier.fillMaxWidth()) { Text(selected?.let { "$label: ${it.number} ${display(it.name)}" } ?: "Choose $label", maxLines = 2, overflow = TextOverflow.Ellipsis) }
+    if (open) Dialog(onDismissRequest = { open = false }) {
+        Surface(shape = MaterialTheme.shapes.large, modifier = Modifier.fillMaxWidth().padding(20.dp)) {
+            Column(Modifier.padding(16.dp)) {
+                Text(label, style = MaterialTheme.typography.titleLarge)
+                OutlinedTextField(value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Search styles") }, singleLine = true)
+                val matches = sortedStyles(styles).filter { style -> query.isBlank() || listOf(style.number, style.name, style.category, style.categoryNumber).joinToString(" ").contains(query, ignoreCase = true) }
+                LazyColumn(Modifier.fillMaxWidth().heightIn(max = 500.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    items(matches, key = { it.id }) { style ->
+                        TextButton(onClick = { onSelect(style); query = ""; open = false }, modifier = Modifier.fillMaxWidth()) {
+                            Column(Modifier.fillMaxWidth()) {
+                                Text(if (style.categoryNumber.isBlank()) categoryDisplay(style.category) else "${style.categoryNumber} ${categoryDisplay(style.category)}", style = MaterialTheme.typography.labelSmall)
+                                Text("${style.number} ${display(style.name)}", maxLines = 2, overflow = TextOverflow.Ellipsis)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
