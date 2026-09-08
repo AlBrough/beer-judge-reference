@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
@@ -69,7 +71,14 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
             if (opened != null) {
                 StyleDetail(opened!!) { opened = null }
             } else {
-                Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Column(
+                    Modifier
+                        .fillMaxSize()
+                        .statusBarsPadding()
+                        .navigationBarsPadding()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
                     Text("Beer Judge Reference", style = MaterialTheme.typography.headlineMedium)
                     var menuOpen by remember { mutableStateOf(false) }
                     Button(onClick = { menuOpen = true }) { Text(selected.first) }
@@ -96,7 +105,14 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
 
 @androidx.compose.runtime.Composable
 private fun StyleDetail(style: BeerStyle, onBack: () -> Unit) {
-    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding()
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
             Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.headlineSmall)
             Button(onClick = onBack) { Text("Back") }
