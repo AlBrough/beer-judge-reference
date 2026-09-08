@@ -1,9 +1,9 @@
 package com.brewvault.beerjudge
 
 import android.os.Bundle
+import android.content.res.Configuration
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -129,13 +129,15 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
     var tab by rememberSaveable { mutableStateOf("Browse") }
     var favourites by rememberSaveable { mutableStateOf(activity.getPreferences(0).getStringSet("favourites", emptySet())?.toSet() ?: emptySet()) }
     var recents by rememberSaveable { mutableStateOf(listOf<String>()) }
-    var appearance by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("appearance", Appearance.SYSTEM.name) ?: Appearance.SYSTEM.name) }
-    var colourTheme by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("colourTheme", ColourTheme.FOREST.name) ?: ColourTheme.FOREST.name) }
-    LaunchedEffect(appearance) { activity.getPreferences(0).edit().putString("appearance", appearance).apply() }
-    LaunchedEffect(colourTheme) { activity.getPreferences(0).edit().putString("colourTheme", colourTheme).apply() }
+    val preferences = remember { activity.getPreferences(0) }
+    var appearance by remember { mutableStateOf(preferences.getString("appearance", Appearance.SYSTEM.name) ?: Appearance.SYSTEM.name) }
+    var colourTheme by remember { mutableStateOf(preferences.getString("colourTheme", ColourTheme.FOREST.name) ?: ColourTheme.FOREST.name) }
+    LaunchedEffect(appearance) { preferences.edit().putString("appearance", appearance).commit() }
+    LaunchedEffect(colourTheme) { preferences.edit().putString("colourTheme", colourTheme).commit() }
     LaunchedEffect(favourites) { activity.getPreferences(0).edit().putStringSet("favourites", favourites).apply() }
     val selectedAppearance = Appearance.values().firstOrNull { it.name == appearance } ?: Appearance.SYSTEM
-    val dark = when (selectedAppearance) { Appearance.SYSTEM -> isSystemInDarkTheme(); Appearance.LIGHT -> false; Appearance.DARK -> true }
+    val systemDark = (activity.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+    val dark = when (selectedAppearance) { Appearance.SYSTEM -> systemDark; Appearance.LIGHT -> false; Appearance.DARK -> true }
     val selectedColourTheme = ColourTheme.values().firstOrNull { it.name == colourTheme } ?: ColourTheme.FOREST
     val filtered = sortedStyles(styles.filter { query.isBlank() || listOf(it.number, it.name, it.category).joinToString(" ").contains(query, ignoreCase = true) })
     val recentStyles = recents.mapNotNull { id -> styles.firstOrNull { it.id == id } }
