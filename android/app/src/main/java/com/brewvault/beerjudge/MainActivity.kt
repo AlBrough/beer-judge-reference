@@ -138,8 +138,8 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
             if (showSettings) SettingsScreen(selected, editions, selectedAppearance, selectedColourTheme, { edition -> selected = edition; styles = readStyles(activity, edition.second); query = "" }, { appearance = it.name }, { colourTheme = it.name }, { showSettings = false })
             else if (opened != null) StyleDetail(opened!!, favourites.contains(opened!!.id), { favourites = if (favourites.contains(opened!!.id)) favourites - opened!!.id else favourites + opened!!.id }) { opened = null }
             else if (openedCategory != null) CategoryDetail(openedCategory!!, { openedCategory = null }) { opened = it; recents = (listOf(it.id) + recents).distinct().take(8) }
-            else if (tab == "Saved") SavedScreen(styles.filter { favourites.contains(it.id) }) { opened = it; recents = (listOf(it.id) + recents).distinct().take(8) }
-            else if (tab == "Compare") CompareScreen(styles) { opened = it }
+            else if (tab == "Saved") SavedScreen(styles.filter { favourites.contains(it.id) }, { tab = "Browse" }, { tab = "Compare" }) { opened = it; recents = (listOf(it.id) + recents).distinct().take(8) }
+            else if (tab == "Compare") CompareScreen(styles, { tab = "Browse" }, { tab = "Saved" }) { opened = it }
             else {
                 var settingsOpen by remember { mutableStateOf(false) }
                 Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
@@ -163,11 +163,7 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                             }
                         }
                     }
-                    NavigationBar {
-                        NavigationBarItem(selected = tab == "Browse", onClick = { tab = "Browse" }, icon = { Text("▦") }, label = { Text("Browse") })
-                        NavigationBarItem(selected = tab == "Compare", onClick = { tab = "Compare" }, icon = { Text("⇄") }, label = { Text("Compare") })
-                        NavigationBarItem(selected = tab == "Saved", onClick = { tab = "Saved" }, icon = { Text("★") }, label = { Text("Saved") })
-                    }
+                    AppNavigationBar("Browse", { tab = "Browse" }, { tab = "Compare" }, { tab = "Saved" })
                 }
             }
         }
@@ -196,15 +192,16 @@ private fun SettingsScreen(selected: Pair<String, String>, editions: List<Pair<S
 
 @OptIn(ExperimentalMaterial3Api::class)
 @androidx.compose.runtime.Composable
-private fun SavedScreen(styles: List<BeerStyle>, onOpen: (BeerStyle) -> Unit) {
+private fun SavedScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onCompare: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
         TopAppBar(title = { Text("Saved") })
-        if (styles.isEmpty()) Text("No saved styles", modifier = Modifier.padding(16.dp)) else LazyColumn(Modifier.padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) { items(styles, key = { it.id }) { style -> Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); Text(categoryDisplay(style.category), style = MaterialTheme.typography.bodySmall) } } } }
+        if (styles.isEmpty()) Text("No saved styles", modifier = Modifier.padding(16.dp)) else LazyColumn(Modifier.weight(1f).padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) { items(styles, key = { it.id }) { style -> Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); Text(categoryDisplay(style.category), style = MaterialTheme.typography.bodySmall) } } } }
+        AppNavigationBar("Saved", onBrowse, onCompare, {})
     }
 }
 
 @androidx.compose.runtime.Composable
-private fun CompareScreen(styles: List<BeerStyle>, onOpen: (BeerStyle) -> Unit) {
+private fun CompareScreen(styles: List<BeerStyle>, onBrowse: () -> Unit, onSaved: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     var first by remember { mutableStateOf<BeerStyle?>(null) }
     var second by remember { mutableStateOf<BeerStyle?>(null) }
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -218,6 +215,16 @@ private fun CompareScreen(styles: List<BeerStyle>, onOpen: (BeerStyle) -> Unit) 
             val labels = (first!!.metrics + second!!.metrics).map { it.first }.distinct()
             labels.forEach { label -> Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) { Text("$label: ${first!!.metrics.firstOrNull { it.first == label }?.second ?: "-"}", modifier = Modifier.weight(1f)); Text(second!!.metrics.firstOrNull { it.first == label }?.second ?: "-", modifier = Modifier.weight(1f)) } }
         }
+        AppNavigationBar("Compare", onBrowse, {}, onSaved)
+    }
+}
+
+@androidx.compose.runtime.Composable
+private fun AppNavigationBar(selected: String, onBrowse: () -> Unit, onCompare: () -> Unit, onSaved: () -> Unit) {
+    NavigationBar {
+        NavigationBarItem(selected = selected == "Browse", onClick = onBrowse, icon = { Text("▦") }, label = { Text("Browse") })
+        NavigationBarItem(selected = selected == "Compare", onClick = onCompare, icon = { Text("⇄") }, label = { Text("Compare") })
+        NavigationBarItem(selected = selected == "Saved", onClick = onSaved, icon = { Text("★") }, label = { Text("Saved") })
     }
 }
 
