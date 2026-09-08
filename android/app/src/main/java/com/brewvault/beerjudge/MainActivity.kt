@@ -182,6 +182,7 @@ private fun SettingsScreen(selected: Pair<String, String>, editions: List<Pair<S
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @androidx.compose.runtime.Composable
 private fun CategoryDetail(category: StyleCategory, onBack: () -> Unit, onOpen: (BeerStyle) -> Unit) {
     Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
