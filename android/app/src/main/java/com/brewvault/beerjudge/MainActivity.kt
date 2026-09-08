@@ -118,7 +118,6 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
     var opened by remember { mutableStateOf<BeerStyle?>(null) }
     var openedCategory by remember { mutableStateOf<StyleCategory?>(null) }
     var showSettings by remember { mutableStateOf(false) }
-    var aabcKind by rememberSaveable { mutableStateOf("Beer") }
     var appearance by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("appearance", Appearance.SYSTEM.name) ?: Appearance.SYSTEM.name) }
     var colourTheme by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("colourTheme", ColourTheme.FOREST.name) ?: ColourTheme.FOREST.name) }
     LaunchedEffect(appearance) { activity.getPreferences(0).edit().putString("appearance", appearance).apply() }
@@ -126,8 +125,7 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
     val selectedAppearance = Appearance.values().firstOrNull { it.name == appearance } ?: Appearance.SYSTEM
     val dark = when (selectedAppearance) { Appearance.SYSTEM -> isSystemInDarkTheme(); Appearance.LIGHT -> false; Appearance.DARK -> true }
     val selectedColourTheme = ColourTheme.values().firstOrNull { it.name == colourTheme } ?: ColourTheme.FOREST
-    val kindFiltered = if (selected.first.startsWith("AABC")) styles.filter { when (aabcKind) { "Mead" -> it.category.equals("MEAD", true); "Cider" -> it.category.equals("CIDER", true); else -> !it.category.equals("MEAD", true) && !it.category.equals("CIDER", true) } } else styles
-    val filtered = sortedStyles(kindFiltered.filter { query.isBlank() || listOf(it.number, it.name, it.category).joinToString(" ").contains(query, ignoreCase = true) })
+    val filtered = sortedStyles(styles.filter { query.isBlank() || listOf(it.number, it.name, it.category).joinToString(" ").contains(query, ignoreCase = true) })
 
     MaterialTheme(colorScheme = colours(selectedColourTheme, dark)) {
         Surface(Modifier.fillMaxSize()) {
@@ -144,15 +142,6 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                         }
                     })
                     Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        if (selected.first.startsWith("AABC")) {
-                            var kindOpen by remember { mutableStateOf(false) }
-                            Box {
-                                Button(onClick = { kindOpen = true }) { Text("AABC: $aabcKind") }
-                                DropdownMenu(expanded = kindOpen, onDismissRequest = { kindOpen = false }) {
-                                    listOf("Beer", "Mead", "Cider").forEach { kind -> DropdownMenuItem(text = { Text(kind) }, onClick = { aabcKind = kind; kindOpen = false; query = "" }) }
-                                }
-                            }
-                        }
                         OutlinedTextField(value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Search styles") }, singleLine = true)
                         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             items(groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
