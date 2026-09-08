@@ -32,6 +32,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -89,9 +90,17 @@ class MainActivity : ComponentActivity() {
 }
 
 private enum class Appearance(val label: String) { SYSTEM("System"), LIGHT("Light"), DARK("Dark") }
+private enum class ColourTheme(val label: String) { FOREST("Forest"), OCEAN("Ocean"), AMBER("Amber"), NEUTRAL("Neutral") }
 
 private val JudgeLightColors = lightColorScheme(primary = Color(0xFF6849A6), onPrimary = Color.White, surface = Color(0xFFFFF7FF), background = Color(0xFFFFF7FF), surfaceVariant = Color(0xFFE9E1EB))
 private val JudgeDarkColors = darkColorScheme(primary = Color(0xFFD0BCFF), onPrimary = Color(0xFF382060), surface = Color(0xFF151218), background = Color(0xFF151218), surfaceVariant = Color(0xFF49454F))
+
+private fun colours(theme: ColourTheme, dark: Boolean) = when (theme) {
+    ColourTheme.FOREST -> if (dark) darkColorScheme(primary = Color(0xFF8FD3A8), surface = Color(0xFF0D1B13), background = Color(0xFF0D1B13)) else lightColorScheme(primary = Color(0xFF176B3A), surface = Color(0xFFF4FBF5), background = Color(0xFFF4FBF5))
+    ColourTheme.OCEAN -> if (dark) darkColorScheme(primary = Color(0xFF91C9FF), surface = Color(0xFF0A1926), background = Color(0xFF0A1926)) else lightColorScheme(primary = Color(0xFF1769AA), surface = Color(0xFFF3F9FF), background = Color(0xFFF3F9FF))
+    ColourTheme.AMBER -> if (dark) darkColorScheme(primary = Color(0xFFFFC66D), surface = Color(0xFF21170C), background = Color(0xFF21170C)) else lightColorScheme(primary = Color(0xFF9A5B00), surface = Color(0xFFFFF8EF), background = Color(0xFFFFF8EF))
+    ColourTheme.NEUTRAL -> if (dark) JudgeDarkColors else lightColorScheme(primary = Color(0xFF53565A), surface = Color(0xFFF7F7F7), background = Color(0xFFF7F7F7))
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @androidx.compose.runtime.Composable
@@ -101,28 +110,31 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
     var styles by remember(selected) { mutableStateOf(readStyles(activity, selected.second)) }
     var query by remember { mutableStateOf("") }
     var opened by remember { mutableStateOf<BeerStyle?>(null) }
+    var openedCategory by remember { mutableStateOf<StyleCategory?>(null) }
+    var showSettings by remember { mutableStateOf(false) }
     var aabcKind by rememberSaveable { mutableStateOf("Beer") }
     var appearance by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("appearance", Appearance.SYSTEM.name) ?: Appearance.SYSTEM.name) }
+    var colourTheme by rememberSaveable { mutableStateOf(activity.getPreferences(0).getString("colourTheme", ColourTheme.FOREST.name) ?: ColourTheme.FOREST.name) }
     LaunchedEffect(appearance) { activity.getPreferences(0).edit().putString("appearance", appearance).apply() }
+    LaunchedEffect(colourTheme) { activity.getPreferences(0).edit().putString("colourTheme", colourTheme).apply() }
     val selectedAppearance = Appearance.values().firstOrNull { it.name == appearance } ?: Appearance.SYSTEM
     val dark = when (selectedAppearance) { Appearance.SYSTEM -> isSystemInDarkTheme(); Appearance.LIGHT -> false; Appearance.DARK -> true }
+    val selectedColourTheme = ColourTheme.values().firstOrNull { it.name == colourTheme } ?: ColourTheme.FOREST
     val kindFiltered = if (selected.first.startsWith("AABC")) styles.filter { when (aabcKind) { "Mead" -> it.category.equals("MEAD", true); "Cider" -> it.category.equals("CIDER", true); else -> !it.category.equals("MEAD", true) && !it.category.equals("CIDER", true) } } else styles
     val filtered = sortedStyles(kindFiltered.filter { query.isBlank() || listOf(it.number, it.name, it.category).joinToString(" ").contains(query, ignoreCase = true) })
 
-    MaterialTheme(colorScheme = if (dark) JudgeDarkColors else JudgeLightColors) {
+    MaterialTheme(colorScheme = colours(selectedColourTheme, dark)) {
         Surface(Modifier.fillMaxSize()) {
-            if (opened != null) StyleDetail(opened!!) { opened = null } else {
+            if (showSettings) SettingsScreen(selected, editions, selectedAppearance, selectedColourTheme, { edition -> selected = edition; styles = readStyles(activity, edition.second); query = "" }, { appearance = it.name }, { colourTheme = it.name }, { showSettings = false })
+            else if (opened != null) StyleDetail(opened!!) { opened = null }
+            else if (openedCategory != null) CategoryDetail(openedCategory!!, { openedCategory = null }) { opened = it }
+            else {
                 var settingsOpen by remember { mutableStateOf(false) }
                 Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
                     TopAppBar(title = { Text("Beer Judge Reference") }, actions = {
                         Box {
-                            IconButton(onClick = { settingsOpen = true }) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
-                            DropdownMenu(expanded = settingsOpen, onDismissRequest = { settingsOpen = false }) {
-                                DropdownMenuItem(text = { Text("Guideline") }, onClick = { settingsOpen = false })
-                                editions.forEach { edition -> DropdownMenuItem(text = { Text(if (selected == edition) "✓ ${edition.first}" else edition.first) }, onClick = { selected = edition; styles = readStyles(activity, edition.second); settingsOpen = false; query = "" }) }
-                                DropdownMenuItem(text = { Text("Appearance") }, onClick = { settingsOpen = false })
-                                Appearance.values().forEach { option -> DropdownMenuItem(text = { Text(if (selectedAppearance == option) "✓ ${option.label}" else option.label) }, onClick = { appearance = option.name; settingsOpen = false }) }
-                            }
+                            IconButton(onClick = { showSettings = true }) { Icon(Icons.Default.Settings, contentDescription = "Settings") }
+                            DropdownMenu(expanded = settingsOpen, onDismissRequest = { settingsOpen = false }) { DropdownMenuItem(text = { Text("Open Settings") }, onClick = { settingsOpen = false; showSettings = true }) }
                         }
                     })
                     Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -138,23 +150,45 @@ private fun BeerJudgeApp(activity: ComponentActivity) {
                         OutlinedTextField(value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(), label = { Text("Search styles") }, singleLine = true)
                         LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             items(groupedStyles(filtered), key = { "${it.number}|${it.name}" }) { category ->
-                                Card(modifier = Modifier.fillMaxWidth()) {
-                                    Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        Text(if (category.number.isBlank()) display(category.name) else "${category.number} ${display(category.name)}", style = MaterialTheme.typography.titleMedium)
-                                        category.styles.forEach { style ->
-                                            Card(onClick = { opened = style }, modifier = Modifier.fillMaxWidth()) {
-                                                Column(Modifier.padding(12.dp)) {
-                                                    Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium)
-                                                    if (style.metrics.isNotEmpty()) Text(style.metrics.take(2).joinToString("  •  ") { "${it.first}: ${it.second}" }, style = MaterialTheme.typography.bodySmall)
-                                                }
-                                            }
-                                        }
-                                    }
+                                Card(onClick = { openedCategory = category }, modifier = Modifier.fillMaxWidth()) {
+                                    Text(if (category.number.isBlank()) display(category.name) else "${category.number} ${display(category.name)}", modifier = Modifier.padding(16.dp), style = MaterialTheme.typography.titleMedium)
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@androidx.compose.runtime.Composable
+private fun SettingsScreen(selected: Pair<String, String>, editions: List<Pair<String, String>>, appearance: Appearance, colourTheme: ColourTheme, onGuideline: (Pair<String, String>) -> Unit, onAppearance: (Appearance) -> Unit, onColourTheme: (ColourTheme) -> Unit, onBack: () -> Unit) {
+    var guidelineOpen by remember { mutableStateOf(false) }
+    var appearanceOpen by remember { mutableStateOf(false) }
+    var colourOpen by remember { mutableStateOf(false) }
+    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+        TopAppBar(title = { Text("Settings") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } })
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("Guideline", style = MaterialTheme.typography.titleMedium)
+            Box { Button(onClick = { guidelineOpen = true }) { Text(selected.first) }; DropdownMenu(guidelineOpen, { guidelineOpen = false }) { editions.forEach { edition -> DropdownMenuItem(text = { Text(edition.first) }, onClick = { onGuideline(edition); guidelineOpen = false }) } } }
+            Text("Appearance", style = MaterialTheme.typography.titleMedium)
+            Box { Button(onClick = { appearanceOpen = true }) { Text(appearance.label) }; DropdownMenu(appearanceOpen, { appearanceOpen = false }) { Appearance.values().forEach { option -> DropdownMenuItem(text = { Text(option.label) }, onClick = { onAppearance(option); appearanceOpen = false }) } } }
+            Text("Colour theme", style = MaterialTheme.typography.titleMedium)
+            Box { Button(onClick = { colourOpen = true }) { Text(colourTheme.label) }; DropdownMenu(colourOpen, { colourOpen = false }) { ColourTheme.values().forEach { option -> DropdownMenuItem(text = { Text(option.label) }, onClick = { onColourTheme(option); colourOpen = false }) } } }
+            Text("© AB Labs", modifier = Modifier.padding(top = 24.dp), style = MaterialTheme.typography.bodySmall)
+        }
+    }
+}
+
+@androidx.compose.runtime.Composable
+private fun CategoryDetail(category: StyleCategory, onBack: () -> Unit, onOpen: (BeerStyle) -> Unit) {
+    Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
+        TopAppBar(title = { Text(if (category.number.isBlank()) display(category.name) else "${category.number} ${display(category.name)}") }, navigationIcon = { TextButton(onClick = onBack) { Text("Back") } })
+        LazyColumn(Modifier.padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(category.styles, key = { it.id }) { style ->
+                Card(onClick = { onOpen(style) }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(14.dp)) { Text("${style.number} ${display(style.name)}", style = MaterialTheme.typography.titleMedium); if (style.metrics.isNotEmpty()) Text(style.metrics.take(2).joinToString("  •  ") { "${it.first}: ${it.second}" }, style = MaterialTheme.typography.bodySmall) } }
             }
         }
     }
